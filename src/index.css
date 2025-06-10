@@ -6,4 +6,16 @@
 @theme{
   --font-inter: "Inter", "sans-serif";
   --font-logo: "Anton", "sans-serif";
+  --color-first: #1B0F23;
+  --color-second: #09030C;
+  --color-third: #9A38C4;
+}
+
+@layer components{
+  .primary-btn{
+    @apply flex items-center justify-center px-7 py-2 cursor-pointer rounded-2xl bg-linear-[45deg] from-second from-50% to-third font-normal w-full;
+  }
+  .btn-border{
+    @apply p-[1px] bg-linear-[-75deg] from-third to-second to-95% rounded-2xl cursor-pointer;
+  }
 }
