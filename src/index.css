@@ -13,9 +13,15 @@
 
 @layer components{
   .primary-btn{
-    @apply flex items-center justify-center px-7 py-2 cursor-pointer rounded-2xl bg-linear-[45deg] from-second from-50% to-third font-normal w-full;
+    @apply flex items-center justify-center px-7 py-2 cursor-pointer rounded-2xl bg-linear-[45deg] from-second from-60% to-third font-normal w-full;
   }
   .btn-border{
-    @apply p-[1px] bg-linear-[-75deg] from-third to-second to-95% rounded-2xl cursor-pointer;
+    @apply p-[1px] bg-linear-[-45deg] from-third to-second to-95% rounded-2xl cursor-pointer;
+  }
+  .linear-border-r{
+    @apply bg-linear-[-70deg] from-third to-second to-70% ;
+  }
+  .linear-border-l{
+    @apply bg-linear-[70deg] from-third to-second to-70% ;
   }
 }
