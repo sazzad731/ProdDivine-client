@@ -59,8 +59,8 @@ const Navbar = () => {
   const authButtons = (
     <>
       {/* btn-border custom class */}
-      <Link className="btn-border">
-         {/* primary-btn custom class */}
+      <Link to="/login" className="btn-border">
+        {/* primary-btn custom class */}
         <button className="primary-btn">Log in</button>
       </Link>
       <div className="btn-border">

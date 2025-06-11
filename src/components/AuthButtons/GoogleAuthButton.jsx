@@ -6,9 +6,7 @@ const GoogleAuthButton = () => {
   const { createOrLoginGoogle } = use(AuthContext);
   const handleGoogleSignIn = () =>{
     createOrLoginGoogle()
-      .then(result =>{
-        console.log(result.user)
-      }).catch(err => console.log(err))
+      .then(() =>{}).catch(err => console.log(err))
   }
   return (
     <div className="btn-border">

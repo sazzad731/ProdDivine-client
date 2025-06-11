@@ -91,7 +91,7 @@ const Registration = () => {
               />
             </fieldset>
             <div className="btn-border mt-10">
-              <button className="primary-btn">Continue</button>
+              <button type='submit' className="primary-btn">Continue</button>
             </div>
             <p className="mt-5 text-white/50">
               Already have an account?{" "}
