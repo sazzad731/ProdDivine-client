@@ -1,11 +1,12 @@
 import React from 'react';
 import GoogleAuthButton from '../../components/AuthButtons/GoogleAuthButton';
+import { Link } from 'react-router';
 
 const Registration = () => {
   return (
     <div className="min-h-[100dvh] flex items-center justify-center pt-20">
       <div className="linear-border-l p-[1px] rounded-2xl">
-        <form className="bg-first flex flex-col items-center sm:w-2xl py-20 px-5 rounded-2xl">
+        <form className="bg-first flex flex-col items-center sm:w-2xl py-14 px-5 rounded-2xl">
           <h2 className="text-3xl mb-5">Join ProdDivine</h2>
           <p className="sm:text-xl font-light mb-8 text-center">
             Discover smarter choices. Share better alternatives.
@@ -21,7 +22,8 @@ const Registration = () => {
                 type="text"
                 className="input focus:outline-third border-[1px] border-third w-full bg-second"
                 placeholder="Type here"
-                name='name'
+                name="name"
+                required
               />
             </fieldset>
             <fieldset className="fieldset mb-3">
@@ -32,7 +34,8 @@ const Registration = () => {
                 type="email"
                 className="input focus:outline-third border-[1px] border-third w-full bg-second"
                 placeholder="Type here"
-                name='email'
+                name="email"
+                required
               />
             </fieldset>
             <fieldset className="fieldset mb-3">
@@ -43,7 +46,8 @@ const Registration = () => {
                 type="password"
                 className="input focus:outline-third border-[1px] border-third w-full bg-second"
                 placeholder="Type here"
-                name='password'
+                name="password"
+                required
               />
             </fieldset>
             <fieldset className="fieldset mb-3">
@@ -54,12 +58,19 @@ const Registration = () => {
                 type="url"
                 className="input focus:outline-third border-[1px] border-third w-full bg-second"
                 placeholder="Type here"
-                name='imageUrl'
+                name="imageUrl"
+                required
               />
             </fieldset>
-            <div className="btn-border">
+            <div className="btn-border mt-10">
               <button className="primary-btn">Continue</button>
             </div>
+            <p className="mt-5 text-white/50">
+              Already have an account?{" "}
+              <Link to="/login" className="text-white underline">
+                Log in
+              </Link>
+            </p>
           </div>
         </form>
       </div>
