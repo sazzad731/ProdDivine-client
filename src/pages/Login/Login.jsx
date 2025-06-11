@@ -26,7 +26,7 @@ const Login = () => {
     <div className="min-h-[100dvh] flex items-center justify-center pt-20">
       <div className="linear-border-l p-[1px] rounded-2xl">
         <form onSubmit={handleLogIn} className="bg-first flex flex-col items-center sm:w-2xl py-14 px-5 rounded-2xl">
-          <h2 className="text-3xl mb-5">Welcome Back to ProdDivine</h2>
+          <h2 className="text-3xl mb-5 text-center">Welcome Back to ProdDivine</h2>
           <p className="sm:text-xl font-light mb-8 text-center">
             Access your recommendations. Empower better buying.
           </p>

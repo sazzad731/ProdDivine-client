@@ -1,14 +1,18 @@
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/img/logo.png"
+import { use } from "react";
+import { AuthContext } from "../../context/AuthContext";
 const Navbar = () => {
-  
+  const { user } = use(AuthContext);
   const navMenu = (
     <>
       <li>
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `${isActive && "border-b-2 text-white/100 font-medium"} pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+            `${
+              isActive && "border-b-2 text-white/100 font-medium"
+            } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
           }
         >
           Home
@@ -18,54 +22,70 @@ const Navbar = () => {
         <NavLink
           to="/queries"
           className={({ isActive }) =>
-            `${isActive && "border-b-2 text-white/100 font-medium"} pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+            `${
+              isActive && "border-b-2 text-white/100 font-medium"
+            } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
           }
         >
           Queries
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/recommend-for-me"
-          className={({ isActive }) =>
-            `${isActive && "border-b-2 text-white/100 font-medium"} pb-1 text-lg font-normal hover:border-b-2 text-white/80`
-          }
-        >
-          Recommendations For Me
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-queries"
-          className={({ isActive }) =>
-            `${isActive && "border-b-2 text-white/100 font-medium"} pb-1 text-lg font-normal hover:border-b-2 text-white/80`
-          }
-        >
-          My Queries
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-recommend"
-          className={({ isActive }) =>
-            `${isActive && "border-b-2 text-white/100 font-medium"} pb-1 text-lg font-normal hover:border-b-2 text-white/80`
-          }
-        >
-          My recommendations
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/recommend-for-me"
+              className={({ isActive }) =>
+                `${
+                  isActive && "border-b-2 text-white/100 font-medium"
+                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+              }
+            >
+              Recommendations For Me
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-queries"
+              className={({ isActive }) =>
+                `${
+                  isActive && "border-b-2 text-white/100 font-medium"
+                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+              }
+            >
+              My Queries
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/my-recommend"
+              className={({ isActive }) =>
+                `${
+                  isActive && "border-b-2 text-white/100 font-medium"
+                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+              }
+            >
+              My recommendations
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   const authButtons = (
     <>
       {/* btn-border custom class */}
-      <Link to="/login" className="btn-border">
-        {/* primary-btn custom class */}
-        <button className="primary-btn">Log in</button>
-      </Link>
-      <div className="btn-border">
-        <button className="primary-btn">Log out</button>
-      </div>
+      {!user && (
+        <Link to="/login" className="btn-border">
+          {/* primary-btn custom class */}
+          <button className="primary-btn">Log in</button>
+        </Link>
+      )}
+      {user && (
+        <div className="btn-border">
+          <button className="primary-btn">Log out</button>
+        </div>
+      )}
     </>
   );
   return (
