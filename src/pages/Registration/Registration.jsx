@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { use } from 'react';
 import GoogleAuthButton from '../../components/AuthButtons/GoogleAuthButton';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
+import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
+  const { createUserEmailPassword, auth } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleCreateUser = (event)=>{
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const image = form.imageUrl.value;
+    createUserEmailPassword(email, password)
+      .then(() =>{
+        updateProfile(auth.currentUser, { displayName: name, photoURL: image })
+          .then(() =>{
+            Swal.fire({
+              title: "Account created successful",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500
+            })
+            navigate('/')
+            form.reset();
+        }).catch(err=>console.log(err));
+      }).catch(err => console.log(err))
+  }
   return (
     <div className="min-h-[100dvh] flex items-center justify-center pt-20">
       <div className="linear-border-l p-[1px] rounded-2xl">
-        <form className="bg-first flex flex-col items-center sm:w-2xl py-14 px-5 rounded-2xl">
+        <form onSubmit={handleCreateUser} className="bg-first flex flex-col items-center sm:w-2xl py-14 px-5 rounded-2xl">
           <h2 className="text-3xl mb-5">Join ProdDivine</h2>
           <p className="sm:text-xl font-light mb-8 text-center">
             Discover smarter choices. Share better alternatives.
