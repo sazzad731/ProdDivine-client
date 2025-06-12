@@ -15,6 +15,9 @@
   .primary-btn{
     @apply flex items-center justify-center px-7 py-2 cursor-pointer rounded-2xl bg-linear-[45deg] from-second from-60% to-third font-normal w-full;
   }
+  .secondary-btn{
+    @apply px-7 py-2 cursor-pointer rounded-2xl bg-second border-[1px] border-third pb-3 hover:outline-2 outline-offset-2 hover:outline-third;
+  }
   .btn-border{
     @apply p-[1px] bg-linear-[-45deg] from-third to-second to-95% rounded-2xl cursor-pointer;
   }
