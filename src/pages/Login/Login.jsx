@@ -14,13 +14,18 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     logInUser(email, password)
-    .then(()=>{
-      Swal.fire({
-        title: "Log in successful",
-        icon: "success"
-      })
-      navigate("/")
-    }).catch(err=>console.log(err))
+      .then(() =>{
+        Swal.fire({
+          title: "Log in successful",
+          icon: "success"
+        })
+        navigate("/")
+      }).catch(err => {
+        Swal.fire({
+          title: `${err.message}`,
+          icon: "error"
+        })
+      });
   }
   return (
     <div className="min-h-[100dvh] flex items-center justify-center pt-20">

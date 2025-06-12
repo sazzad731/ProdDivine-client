@@ -29,7 +29,7 @@ const slides = [
 
 const HeroSlider = () => {
   return (
-    <div className="w-full my-20 py-10">
+    <section className="w-full my-20 py-10">
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 4000 }}
@@ -61,7 +61,7 @@ const HeroSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 
 const RootLayout = () => {
   return (
@@ -10,9 +11,10 @@ const RootLayout = () => {
       <header className="font-inter">
         <Navbar />
       </header>
-      <main className="font-inter max-w-[93.75rem] mx-auto">
+      <main className="font-inter max-w-[93.75rem] mx-auto z-0">
         <Outlet />
       </main>
+      <Footer/>
     </div>
   );
 };

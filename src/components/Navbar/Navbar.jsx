@@ -109,7 +109,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar shadow-sm w-full 2xl:w-[93.75rem] mx-auto mt-2 bg-first rounded-xl px-5 fixed left-0 right-0">
+    <div className="navbar shadow-sm w-full 2xl:w-[93.75rem] mx-auto mt-2 bg-first rounded-xl px-5 fixed left-0 right-0 z-50">
       <div className="navbar-start w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
