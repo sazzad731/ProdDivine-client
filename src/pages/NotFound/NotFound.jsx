@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { FaArrowLeft } from "react-icons/fa";
 import error from "../../assets/img/error.png"
 
 const NotFound = () => {
