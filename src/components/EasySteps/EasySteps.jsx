@@ -5,12 +5,14 @@ import { IoMdSearch } from "react-icons/io";
 const EasySteps = () => {
   return (
     <div className="mb-40">
-      <h2 className="sm:text-3xl text-2xl mb-3">
+      <p className='mb-5'>How It Works</p>
+      <h2 className="sm:text-3xl font-semibold text-2xl mb-3">
         Find the Perfect Products in 3 Easy Steps
       </h2>
       <p className="mb-10">
         Our platform connects you with a community of experts and enthusiasts to
-        help you discover <br className='hidden md:block' /> the best products for your needs.
+        help you discover <br className="hidden md:block" /> the best products
+        for your needs.
       </p>
       <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-8 gap-4">
         <div className="linear-border-l p-[1px] rounded-xl">
