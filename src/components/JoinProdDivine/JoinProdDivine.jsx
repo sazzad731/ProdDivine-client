@@ -13,7 +13,7 @@ const JoinProdDivine = () => {
       <div className="grid md:grid-cols-2 lg:gap-10 gap-7">
         <div className="linear-border-l p-[1px] rounded-xl">
           <div className="bg-first rounded-xl p-5 w-full h-full">
-            <img src={expert} alt="image" className="mb-5 w-full" />
+            <img src={expert} alt="image" className="mb-5 w-full"/>
             <h4 className="text-xl font-bold mb-2">Connect with Experts</h4>
             <p className="font-light text-white/70">
               Engage with experienced users and industry professionals to get

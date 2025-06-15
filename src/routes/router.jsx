@@ -4,6 +4,7 @@ import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
 import Home from "../pages/Home/Home";
+import AddQueries from "../pages/AddQueries/AddQueries";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/registration",
         Component: Registration
+      },
+      {
+        path: "/add-queries",
+        element: <AddQueries/>
       }
     ]
   },
