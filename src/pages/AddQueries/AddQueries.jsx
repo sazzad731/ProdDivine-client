@@ -1,8 +1,48 @@
+import Swal from "sweetalert2";
+import useApi from "../../hooks/useApi";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const AddQueries = () => {
+  const { addQueryApi } = useApi();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAddQuery = (event)=>{
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    const QueryData = {
+      ...data,
+      email: user.email,
+      name: user.displayName,
+      profile: user.photoURL,
+      recommendationCount: 0,
+    };
+    
+    addQueryApi(QueryData).then(result=>{
+      if (result.insertedId) {
+        Swal.fire({
+          title: "Query added successful",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500
+        })
+        navigate("/my-queries")
+        form.reset();
+      }
+    }).catch(err=>{
+      Swal.fire({
+        title: err.message,
+        icon: "error"
+      })
+    })
+  }
+
   return (
     <div className="flex flex-col justify-center min-h-screen">
-      <form className="linear-border-l p-[1px] rounded-2xl z-50">
+      <form onSubmit={handleAddQuery} className="linear-border-l p-[1px] rounded-2xl z-30">
         <div className="bg-first py-20 px-14 rounded-2xl">
           <h2 className="text-center text-3xl mb-20">Add Queries</h2>
           <div className="grid grid-cols-2 gap-5 mb-10">
