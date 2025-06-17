@@ -4,16 +4,21 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 const useApi = () => {
   const axiosSecure = useAxiosSecure();
 
-  const addQueryPromise = useCallback((data)=>{
+  const addQueryPromise = (data)=>{
     return axiosSecure.post("/add-query", data).then((res) => res.data);
-  }, [axiosSecure])
+  }
 
 
-  const MyQueriesPromise = useCallback((email)=>{
+  const myQueriesPromise = useCallback((email)=>{
     return axiosSecure.get(`/my-queries?email=${email}`).then(res => res.data);
-  }, [axiosSecure])
+  }, [ axiosSecure ])
+  
 
-  return { addQueryPromise, MyQueriesPromise };
+  const deleteQueryPromise = (id)=>{
+    return axiosSecure.delete(`/delete-query/${id}`).then(res => res.data);
+  }
+
+  return { addQueryPromise, myQueriesPromise, deleteQueryPromise };
 };
 
 export default useApi;
