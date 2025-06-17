@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import GoogleAuthButton from "../../components/AuthButtons/GoogleAuthButton";
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,6 +7,9 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { logInUser } = use(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location)
 
   const handleLogIn = (event)=>{
     event.preventDefault();
@@ -19,7 +22,7 @@ const Login = () => {
           title: "Log in successful",
           icon: "success"
         })
-        navigate("/")
+        navigate(location.state || "/")
       }).catch(err => {
         Swal.fire({
           title: `${err.message}`,

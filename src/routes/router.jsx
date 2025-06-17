@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import Home from "../pages/Home/Home";
 import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -26,11 +27,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-queries",
-        element: <AddQueries />,
+        element: <PrivateRoute><AddQueries /></PrivateRoute>,
       },
       {
         path: "/my-queries",
-        element: <MyQueries/>
+        element: (
+          <PrivateRoute>
+            <MyQueries />
+          </PrivateRoute>
+        ),
       },
     ],
   },
