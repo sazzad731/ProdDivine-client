@@ -1,0 +1,87 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
+import AddQueryBanner from "../../components/AddQueryBanner/AddQueryBanner";
+import useApi from "../../hooks/useApi";
+import useAuth from "../../hooks/useAuth";
+import Spinner from "../../components/Spinner/Spinner";
+import Swal from "sweetalert2";
+
+const MyQueries = () => {
+  const { user, loading } = useAuth();
+  const [ queries, setQueries ] = useState([]);
+  const { MyQueriesPromise } = useApi();
+  const [ isLoading, setIsLoading ] = useState(true);
+  
+  useEffect(()=>{
+    if (!loading && user?.email) {
+      MyQueriesPromise(user.email)
+        .then((result) => {
+          setQueries(result);
+          setIsLoading(false)
+        })
+        .catch((err) => {
+          setIsLoading(false)
+          Swal.fire({
+            title: err.message,
+            icon: "error"
+          })
+        });
+    }
+  }, [ MyQueriesPromise, user, loading ])
+
+  return (
+    <div className="min-h-screen pt-20 z-30 mb-40">
+      <AddQueryBanner />
+
+      {isLoading ? (
+        <Spinner />
+      ) : queries.length === 0 ? (
+        <div className="text-center mt-20 space-y-4">
+          <p className="text-lg text-white/70">No queries found!</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {queries?.map((query) => (
+            <div key={query._id} className="card bg-first shadow-md p-4">
+              <img
+                src={query.productImage}
+                alt={query.productName}
+                className="object-cover rounded h-96"
+              />
+              <div className="card-body justify-between space-y-2">
+                <div>
+                  <h2 className="text-xl font-semibold mb-3">{query.productName}</h2>
+                  <p className="text-sm mb-2">
+                    <span className="text-lg font-medium">Query Title:</span>{" "}
+                    {query.queryTitle}
+                  </p>
+                  <p>
+                    <span className="text-lg font-medium">Boycott Reason:</span> {query?.boycottReason}
+                  </p>
+                </div>
+                <div className="flex justify-end gap-5 mt-4">
+                  <Link to={`/queries/${query._id}`}>
+                    <button className="btn btn-sm btn-outline">
+                      <FaEye size={20} />
+                    </button>
+                  </Link>
+                  <Link to={`/update-query/${query._id}`}>
+                    <button className="btn btn-sm btn-outline btn-success">
+                      <FaEdit size={20} />
+                    </button>
+                  </Link>
+                  <button className="btn btn-sm btn-outline btn-error">
+                    <FaTrash size={20} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MyQueries;

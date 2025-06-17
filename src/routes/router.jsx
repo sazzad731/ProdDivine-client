@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
 import Home from "../pages/Home/Home";
 import AddQueries from "../pages/AddQueries/AddQueries";
+import MyQueries from "../pages/MyQueries/MyQueries";
 
 export const router = createBrowserRouter([
   {
@@ -13,24 +14,28 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home
+        Component: Home,
       },
       {
-        path: '/login',
-        Component: Login
+        path: "/login",
+        Component: Login,
       },
       {
         path: "/registration",
-        Component: Registration
+        Component: Registration,
       },
       {
         path: "/add-queries",
-        element: <AddQueries/>
-      }
-    ]
+        element: <AddQueries />,
+      },
+      {
+        path: "/my-queries",
+        element: <MyQueries/>
+      },
+    ],
   },
   {
     path: "*",
-    Component: NotFound
-  }
-])
+    Component: NotFound,
+  },
+]);

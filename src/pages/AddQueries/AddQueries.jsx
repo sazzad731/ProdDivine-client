@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 const AddQueries = () => {
-  const { addQueryApi } = useApi();
+  const { addQueryPromise } = useApi();
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const AddQueries = () => {
       recommendationCount: 0,
     };
     
-    addQueryApi(QueryData).then(result=>{
+    addQueryPromise(QueryData).then(result=>{
       if (result.insertedId) {
         Swal.fire({
           title: "Query added successful",
@@ -38,7 +38,7 @@ const AddQueries = () => {
         icon: "error"
       })
     })
-  }
+  } 
 
   return (
     <div className="flex flex-col justify-center min-h-screen">
@@ -98,13 +98,12 @@ const AddQueries = () => {
               <legend className="fieldset-legend text-lg font-normal text-white">
                 Boycotting Reason Details
               </legend>
-              <input
-                type="text"
-                className="input focus:outline-third border-[1px] border-third w-full bg-second"
+              <textarea
+                className="input focus:outline-third border-[1px] border-third w-full bg-second h-24 pt-2 text-lg"
                 placeholder="The reason you don’t want this product"
                 name="boycottReason"
                 required
-              />
+              ></textarea>
             </fieldset>
           </div>
           <div className="flex items-center justify-center">
