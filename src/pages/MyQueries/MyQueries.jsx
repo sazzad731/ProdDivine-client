@@ -6,12 +6,15 @@ import useApi from "../../hooks/useApi";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner/Spinner";
 import Swal from "sweetalert2";
+import Modal from "../../components/Modal/Modal";
 
 const MyQueries = () => {
   const { user, loading } = useAuth();
   const [queries, setQueries] = useState([]);
   const { myQueriesPromise, deleteQueryPromise } = useApi();
-  const [isLoading, setIsLoading] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ selectedQuery, setSelectedQuery ] = useState({})
+  const [ isUpdated, setIsUpdated ] = useState(false);
 
   useEffect(() => {
     if (!loading && user?.email) {
@@ -28,7 +31,7 @@ const MyQueries = () => {
           });
         });
     }
-  }, [ myQueriesPromise, user, loading ]);
+  }, [ myQueriesPromise, user, loading, isUpdated ]);
   
 
   const handleDeleteQuery = (id)=>{
@@ -63,6 +66,11 @@ const MyQueries = () => {
     });
   }
 
+  const handleOpenModal = (query)=>{
+    setSelectedQuery(query)
+    document.getElementById("my_modal_5").showModal()
+  }
+
   return (
     <div className="min-h-screen pt-20 z-30 mb-40">
       <AddQueryBanner />
@@ -79,6 +87,11 @@ const MyQueries = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {queries?.map((query) => (
               <div key={query._id} className="card bg-first shadow-md p-4">
+                <Modal
+                  query={selectedQuery}
+                  isUpdated={isUpdated} 
+                  setIsUpdated={setIsUpdated}
+                />
                 <img
                   src={query.productImage}
                   alt={query.productName}
@@ -106,12 +119,16 @@ const MyQueries = () => {
                         <FaEye size={20} />
                       </button>
                     </Link>
-                    <Link to={`/update-query/${query._id}`}>
-                      <button className="btn btn-sm btn-outline btn-success">
-                        <FaEdit size={20} />
-                      </button>
-                    </Link>
-                    <button onClick={()=>handleDeleteQuery(query?._id)} className="btn btn-sm btn-outline btn-error">
+                    <button
+                      onClick={() => handleOpenModal(query)}
+                      className="btn btn-sm btn-outline btn-success"
+                    >
+                      <FaEdit size={20} />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteQuery(query?._id)}
+                      className="btn btn-sm btn-outline btn-error"
+                    >
                       <FaTrash size={20} />
                     </button>
                   </div>

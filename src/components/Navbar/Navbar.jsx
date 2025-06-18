@@ -99,8 +99,8 @@ const Navbar = () => {
         </Link>
       )}
       {user && (
-        <div className="btn-border">
-          <button onClick={handleLogOut} className="primary-btn">
+        <div className="warning-border">
+          <button onClick={handleLogOut} className="warning-btn">
             Log out
           </button>
         </div>
