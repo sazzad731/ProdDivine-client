@@ -4,6 +4,10 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 const useApi = () => {
   const axiosSecure = useAxiosSecure();
 
+  const recentQueryPromise = ()=>{
+    return axiosSecure.get("recent-query").then(res => res.data);
+  }
+
   const addQueryPromise = (data)=>{
     return axiosSecure.post("/add-query", data).then((res) => res.data);
   }
@@ -26,6 +30,7 @@ const useApi = () => {
   }
 
   return {
+    recentQueryPromise,
     addQueryPromise,
     myQueriesPromise,
     updateQueryPromise,
