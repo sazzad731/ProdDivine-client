@@ -5,8 +5,12 @@ const useApi = () => {
   const axiosSecure = useAxiosSecure();
 
   const recentQueryPromise = ()=>{
-    return axiosSecure.get("recent-query").then(res => res.data);
+    return axiosSecure.get("/recent-query").then(res => res.data);
   }
+
+  const allQueriesPromise = useCallback(()=>{
+    return axiosSecure.get("/queries").then(res => res.data);
+  }, [axiosSecure])
 
   const addQueryPromise = (data)=>{
     return axiosSecure.post("/add-query", data).then((res) => res.data);
@@ -31,6 +35,7 @@ const useApi = () => {
 
   return {
     recentQueryPromise,
+    allQueriesPromise,
     addQueryPromise,
     myQueriesPromise,
     updateQueryPromise,

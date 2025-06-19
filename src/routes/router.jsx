@@ -7,7 +7,7 @@ import Home from "../pages/Home/Home";
 import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
 import PrivateRoute from "./PrivateRoute";
-
+import Queries from "../pages/Queries/Queries";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +16,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/queries",
+        Component: Queries,
       },
       {
         path: "/login",
@@ -27,7 +31,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-queries",
-        element: <PrivateRoute><AddQueries /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddQueries />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-queries",

@@ -5,7 +5,7 @@ import { IoMdSearch } from "react-icons/io";
 const EasySteps = () => {
   return (
     <div className="mb-40">
-      <p className='mb-5'>How It Works</p>
+      <p className="mb-5">How It Works</p>
       <h2 className="sm:text-3xl font-semibold text-2xl mb-3">
         Find the Perfect Products in 3 Easy Steps
       </h2>
@@ -25,7 +25,7 @@ const EasySteps = () => {
             </p>
           </div>
         </div>
-        <div className="linear-border-l p-[1px] rounded-xl">
+        <div className="linear-border-l bg-linear-[-70deg] sm:bg-linear-[70deg] p-[1px] rounded-xl">
           <div className="bg-first rounded-xl p-5 w-full h-full">
             <PiUsers size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">Connect with Experts</h4>

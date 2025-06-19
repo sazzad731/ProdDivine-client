@@ -96,7 +96,7 @@ const Modal = ({query, setIsUpdated, isUpdated}) => {
                   Boycotting Reason Details
                 </legend>
                 <textarea
-                  className="input focus:outline-third border-[1px] border-third w-full bg-second h-24 pt-2 text-lg"
+                  className="input focus:outline-third border-[1px] border-third w-full bg-second h-24 pt-2 text-lg text-wrap"
                   placeholder="The reason you don’t want this product"
                   name="boycottReason"
                   defaultValue={boycottReason}
