@@ -99,7 +99,7 @@ const AddQueries = () => {
                 Boycotting Reason Details
               </legend>
               <textarea
-                className="input focus:outline-third border-[1px] border-third w-full bg-second h-24 pt-2 text-lg"
+                className="input focus:outline-third text-wrap border-[1px] border-third w-full bg-second h-24 pt-2 text-lg"
                 placeholder="The reason you don’t want this product"
                 name="boycottReason"
                 required

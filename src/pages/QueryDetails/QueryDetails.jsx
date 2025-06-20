@@ -3,12 +3,14 @@ import useApi from "../../hooks/useApi";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Spinner/Spinner";
+import RecommendationSection from "./RecommendationSection/RecommendationSection";
 
 const QueryDetails = () => {
   const {id} = useParams();
   const { queryDetailsPromise } = useApi();
   const [ query, setQuery ] = useState({});
   const [ loading, setLoading ] = useState(true);
+  const [ updatedRecomCount, setUpdatedRecCount ] = useState(0);
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -26,15 +28,14 @@ const QueryDetails = () => {
       navigate("/not-found")
     });
   }, [ queryDetailsPromise, id, navigate ])
-  console.log(query)
 
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="min-h-screen mt-20 pt-20">
-          <div className="flex gap-5">
+        <div className="min-h-screen my-20 pt-20">
+          <div className="flex gap-5 mb-40">
             <img
               src={query?.productImage}
               alt={query?.productName}
@@ -56,7 +57,7 @@ const QueryDetails = () => {
               </p>
               <p className="text-white/80 mb-3">
                 <span className="text-lg text-white">Recommendation: </span>
-                {query?.recommendationCount}
+                {query?.recommendationCount + updatedRecomCount}
               </p>
 
               <div>
@@ -72,6 +73,8 @@ const QueryDetails = () => {
               </div>
             </div>
           </div>
+
+          <RecommendationSection query={query} setUpdatedRecCount={setUpdatedRecCount}/>
         </div>
       )}
     </>
