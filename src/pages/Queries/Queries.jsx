@@ -54,7 +54,7 @@ const Queries = () => {
                       <span className="text-lg font-medium text-white">Query Title:</span>{" "}
                       {query.queryTitle}
                     </p>
-                    <p className="mb-4 text-white/80">
+                    <p className="text-white/80">
                       <span className="text-lg font-medium text-white">
                         Boycott Reason:
                       </span>{" "}
@@ -62,12 +62,12 @@ const Queries = () => {
                       {query.boycottReason.length > 30 && " ...."}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg">
+                  <div className="flex flex-col xl:flex-row xl:items-center justify-between">
+                    <span className="text-lg xl:mb-0 mb-10">
                       Recommendation: {query.recommendationCount}
                     </span>
                     <div className="btn-border">
-                      <Link to="/query-details" className="primary-btn text-lg">Recommend</Link>
+                      <Link to={`/query-details/${query._id}`} className="primary-btn text-lg">Recommend</Link>
                     </div>
                   </div>
                 </div>

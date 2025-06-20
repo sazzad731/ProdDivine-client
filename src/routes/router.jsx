@@ -8,6 +8,7 @@ import AddQueries from "../pages/AddQueries/AddQueries";
 import MyQueries from "../pages/MyQueries/MyQueries";
 import PrivateRoute from "./PrivateRoute";
 import Queries from "../pages/Queries/Queries";
+import QueryDetails from "../pages/QueryDetails/QueryDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/queries",
         Component: Queries,
+      },
+      {
+        path: "/query-details/:id",
+        Component: QueryDetails
       },
       {
         path: "/login",
