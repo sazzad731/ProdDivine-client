@@ -4,37 +4,40 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Spinner/Spinner";
 import RecommendationSection from "./RecommendationSection/RecommendationSection";
+import AllRecommendations from "./AllRecommendations/AllRecommendations";
 
 const QueryDetails = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const { queryDetailsPromise } = useApi();
-  const [ query, setQuery ] = useState({});
-  const [ loading, setLoading ] = useState(true);
-  const [ updatedRecomCount, setUpdatedRecCount ] = useState(0);
+  const [query, setQuery] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [updatedRecomCount, setUpdatedRecCount] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    queryDetailsPromise(id).then(result => {
-      setQuery(result)
-      setLoading(false);
-    }).catch(err => {
-      Swal.fire({
-        title: err.message,
-        icon: "error",
-        showConfirmButton: false,
-        timer: 2000
+  useEffect(() => {
+    queryDetailsPromise(id)
+      .then((result) => {
+        setQuery(result);
+        setLoading(false);
       })
-      setLoading(false)
-      navigate("/not-found")
-    });
-  }, [ queryDetailsPromise, id, navigate ])
+      .catch((err) => {
+        Swal.fire({
+          title: err.message,
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        setLoading(false);
+        navigate("/not-found");
+      });
+  }, [queryDetailsPromise, id, navigate]);
 
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="min-h-screen my-20 pt-20">
+        <div className="min-h-screen mt-20 mb-40 pt-20">
           <div className="flex gap-5 mb-40">
             <img
               src={query?.productImage}
@@ -74,7 +77,15 @@ const QueryDetails = () => {
             </div>
           </div>
 
-          <RecommendationSection query={query} setUpdatedRecCount={setUpdatedRecCount}/>
+          <RecommendationSection
+            query={query}
+            setUpdatedRecCount={setUpdatedRecCount}
+          />
+
+          <AllRecommendations
+            queryId={query?._id}
+            updatedRecomCount={updatedRecomCount}
+          />
         </div>
       )}
     </>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import useAxiosSecure from './useAxiosSecure';
 
 const useRecommendationApi = () => {
@@ -8,7 +8,11 @@ const useRecommendationApi = () => {
     return axiosSecure.post("/add-recommendation", recommendedData).then(res=>res.data)
   }
 
-  return { addRecommendationPromise };
+  const allRecommendationsPromise = useCallback((id)=>{
+    return axiosSecure.get(`/all-recommendations/${id}`).then(res => res.data);
+  }, [axiosSecure])
+
+  return { addRecommendationPromise, allRecommendationsPromise };
 };
 
 export default useRecommendationApi;
