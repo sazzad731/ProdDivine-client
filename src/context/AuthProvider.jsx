@@ -8,7 +8,6 @@ const AuthProvider = ({children}) => {
   const [ loading, setLoading ] = useState(true);
   const googleProvider = new GoogleAuthProvider();
 
-  console.log(user);
 
   const createOrLoginGoogle = ()=>{
     setLoading(true);

@@ -7,7 +7,7 @@ import Spinner from '../../components/Spinner/Spinner';
 
 const MyRecommendations = () => {
   const { user, loading } = useAuth()
-  const { myRecommendationsPromise } = useRecommendationApi();
+  const { myRecommendationsPromise, deleteRecommendationPromise } = useRecommendationApi();
   const [ recommendations, setRecommendations ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
@@ -25,8 +25,44 @@ const MyRecommendations = () => {
       });
     }
   }, [ user, loading, myRecommendationsPromise ])
-  
-  console.log(recommendations)
+
+
+  const handleDeleteRecommendation = (queryId, productId)=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteRecommendationPromise(queryId, productId).then(result=>{
+          console.log(result);
+          if (
+            result.result.deletedCount === 1 &&
+            result.updatedRecommendation.modifiedCount === 1
+          ) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+
+            const remaining = recommendations.filter((prod) => prod._id !== productId)
+            setRecommendations(remaining);
+          }
+        }).catch(err=>{
+          Swal.fire({
+            title: err.message,
+            icon: "error"
+          })
+        })
+      }
+    });
+  }
+
   return (
     <div className="min-h-screen mt-20 pt-10">
       <h2 className="text-center text-3xl mb-20">
@@ -77,7 +113,7 @@ const MyRecommendations = () => {
                     </td>
                     <td>
                       <span className="badge badge-ghost badge-sm">
-                        {product.productName}
+                        {product.productName.slice(0, 20)}
                       </span>
                       <br />
                       {product.queryTitle.slice(0, 30)} ...
@@ -85,7 +121,12 @@ const MyRecommendations = () => {
                     <td>{product.userName}</td>
                     <th className="flex pt-5">
                       <div className="error-border">
-                        <button className="error-btn">
+                        <button
+                          onClick={() =>
+                            handleDeleteRecommendation(product.queryId, product._id)
+                          }
+                          className="error-btn"
+                        >
                           <FaTrashAlt size={20} />
                         </button>
                       </div>

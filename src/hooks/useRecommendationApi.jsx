@@ -15,12 +15,17 @@ const useRecommendationApi = () => {
 
   const myRecommendationsPromise = useCallback((email)=>{
     return axiosSecure.get(`/my-recommendations/${email}`).then(res => res.data);
-  }, [axiosSecure])
+  }, [ axiosSecure ])
+  
+  const deleteRecommendationPromise = (queyId, productId)=>{
+    return axiosSecure.delete(`/delete-recommendations?productId=${productId}&&queryId=${queyId}`).then(res => res.data);
+  }
 
   return {
     addRecommendationPromise,
     allRecommendationsPromise,
     myRecommendationsPromise,
+    deleteRecommendationPromise,
   };
 };
 
