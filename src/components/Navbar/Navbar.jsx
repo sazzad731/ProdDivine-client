@@ -75,7 +75,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/my-recommend"
+              to="/my-recommendations"
               className={({ isActive }) =>
                 `${
                   isActive && "border-b-2 text-white/100 font-medium"

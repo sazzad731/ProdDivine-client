@@ -29,21 +29,21 @@ const AllRecommendations = ({ queryId, updatedRecomCount }) => {
           recommendations.map((recommendedProduct) => (
             <Link
               key={recommendedProduct._id}
-              className="flex items-center bg-first rounded-3xl"
+              className="flex sm:gap-0 gap-3 items-center bg-first rounded-3xl"
             >
               <img
                 src={recommendedProduct.recommendedProductImage}
                 alt={recommendedProduct.recommendedProductName}
                 className="w-24 rounded-3xl"
               />
-              <div className="flex items-center justify-between w-full px-5">
+              <div className="flex sm:flex-row flex-col sm:items-center justify-between w-full sm:px-5 sm:py-0 py-3">
                 <div>
                   <p className="text-white/80">
-                    <span className="text-xl text-white font-medium">Name:</span>{" "}
+                    <span className="sm:text-xl text-white font-medium">Name:</span>{" "}
                     {recommendedProduct.recommendedProductName}
                   </p>
                   <p className="text-white/80">
-                    <span className="text-xl text-white font-medium">Title:</span>{" "}
+                    <span className="sm:text-xl text-white font-medium">Title:</span>{" "}
                     {recommendedProduct.recommendationTitle}
                   </p>
                   <p>By {recommendedProduct.recommenderName}</p>

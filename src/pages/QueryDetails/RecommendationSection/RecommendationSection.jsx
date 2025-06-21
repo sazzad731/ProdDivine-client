@@ -1,13 +1,18 @@
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useRecommendationApi from "../../../hooks/useRecommendationApi";
+import { useNavigate } from "react-router";
 
 const RecommendationSection = ({query, setUpdatedRecCount}) => {
   const { user } = useAuth();
   const { addRecommendationPromise } = useRecommendationApi();
+  const navigate = useNavigate();
 
   const handleAddRecommendation = (event)=>{
     event.preventDefault();
+    if(!user){
+      return navigate("/login")
+    }
     const form = event.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());

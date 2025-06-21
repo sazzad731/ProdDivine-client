@@ -5,7 +5,6 @@ import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
 
 const RecentQueries = ({ recentQueryPromise }) => {
   const recentQuery = use(recentQueryPromise);
-  console.log(recentQuery)
   return (
     <div className="mb-40">
       <h2 className="text-3xl mb-10">Recent Queries</h2>

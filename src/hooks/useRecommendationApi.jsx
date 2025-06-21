@@ -10,9 +10,18 @@ const useRecommendationApi = () => {
 
   const allRecommendationsPromise = useCallback((id)=>{
     return axiosSecure.get(`/all-recommendations/${id}`).then(res => res.data);
+  }, [ axiosSecure ])
+  
+
+  const myRecommendationsPromise = useCallback((email)=>{
+    return axiosSecure.get(`/my-recommendations/${email}`).then(res => res.data);
   }, [axiosSecure])
 
-  return { addRecommendationPromise, allRecommendationsPromise };
+  return {
+    addRecommendationPromise,
+    allRecommendationsPromise,
+    myRecommendationsPromise,
+  };
 };
 
 export default useRecommendationApi;
