@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import Spinner from "../../components/Spinner/Spinner"
 import { Link, useNavigate } from "react-router";
 import { IoSearch } from "react-icons/io5";
+import { BsFillGrid3X2GapFill, BsGridFill } from "react-icons/bs";
 
 
 const Queries = () => {
@@ -11,7 +12,10 @@ const Queries = () => {
   const { allQueriesPromise } = useApi();
   const [ loading, setLoading ] = useState(true);
   const searchRef = useRef();
-  const [searchValue, setSearchValue] = useState("")
+  const [ searchValue, setSearchValue ] = useState("")
+  const [ gridCol2, setGridCol2 ] = useState("");
+  const [ gridCol3, setGridCol3 ] = useState("grid-cols-3");
+  const [ isActive, setIsActive ] = useState("gridCol3");
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -30,6 +34,7 @@ const Queries = () => {
       });
   }, [ allQueriesPromise, navigate, searchValue ])
   
+
 
   return (
     <>
@@ -57,7 +62,27 @@ const Queries = () => {
               placeholder="Search here"
             />
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="mb-5 join hidden lg:block">
+            <button
+              onClick={() => {
+                setGridCol2("grid-cols-2");
+                setIsActive("gridCol2");
+              }}
+              className={`btn ${isActive === "gridCol2" && "bg-white/70"}`}
+            >
+              <BsGridFill />
+            </button>
+            <button
+              onClick={() => {
+                setGridCol3("grid-cols-3");
+                setIsActive("gridCol3");
+              }}
+              className={`btn ${isActive === "gridCol3" && "bg-white/70"}`}
+            >
+              <BsFillGrid3X2GapFill size={20} />
+            </button>
+          </div>
+          <div className={`grid sm:grid-cols-2 lg:${isActive === "gridCol2" ? gridCol2 : isActive === "gridCol3" &&  gridCol3} gap-7`}>
             {queries?.map((query) => (
               <div key={query._id} className="card bg-first shadow-md p-4">
                 <img

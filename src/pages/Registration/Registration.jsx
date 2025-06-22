@@ -17,19 +17,31 @@ const Registration = () => {
     const password = form.password.value;
     const image = form.imageUrl.value;
     createUserEmailPassword(email, password)
-      .then(() =>{
+      .then(() => {
         updateProfile(auth.currentUser, { displayName: name, photoURL: image })
-          .then(() =>{
+          .then(() => {
             Swal.fire({
               title: "Account created successful",
               icon: "success",
               showConfirmButton: false,
-              timer: 1500
-            })
-            navigate('/')
+              timer: 1500,
+            });
+            navigate("/");
             form.reset();
-        }).catch(err=>console.log(err));
-      }).catch(err => console.log(err))
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: err.message,
+              icon: "error",
+            });
+          });
+      })
+      .catch((err) =>
+        Swal.fire({
+          title: err.message,
+          icon: "error",
+        })
+      );
   }
   return (
     <div className="min-h-[100dvh] flex items-center justify-center pt-20">

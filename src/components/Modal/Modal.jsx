@@ -13,7 +13,6 @@ const Modal = ({query, setIsUpdated, isUpdated}) => {
     const updatedData = Object.fromEntries(formData.entries());
     
     updateQueryPromise(_id, updatedData).then(result=>{
-      console.log(result)
       if (result?.modifiedCount === 1) {
         Swal.fire({
           title: "Query update successful",

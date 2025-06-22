@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 import useAuth from './useAuth';
+import Swal from 'sweetalert2';
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000" 
-})
+  baseURL: "http://localhost:5000",
+});
 
 const useAxiosSecure = () => {
-  const { user } = useAuth();
+  const { user, logOutUser } = useAuth();
 
   axiosInstance.interceptors.request.use(config=>{
     config.headers.authorization = `Bearer ${user?.accessToken}`;
@@ -20,9 +21,20 @@ const useAxiosSecure = () => {
   axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
-      // Global error handling
-      if (error.response?.status === 401) {
-        // Redirect or notify
+      if(error.status === 401){
+        logOutUser().then(()=>{
+          Swal.fire({
+            title: 'Sign out user for 401 status code',
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }).catch((err)=>{
+          Swal.fire({
+            title: err.message,
+            icon: "error"
+          })
+        })
       }
       return Promise.reject(error);
     }

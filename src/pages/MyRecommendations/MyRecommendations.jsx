@@ -39,7 +39,6 @@ const MyRecommendations = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteRecommendationPromise(queryId, productId).then(result=>{
-          console.log(result);
           if (
             result.result.deletedCount === 1 &&
             result.updatedRecommendation.modifiedCount === 1

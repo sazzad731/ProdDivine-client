@@ -9,8 +9,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location)
-
   const handleLogIn = (event)=>{
     event.preventDefault();
     const form = event.target;
