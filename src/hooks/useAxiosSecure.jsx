@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import Swal from 'sweetalert2';
 
 const axiosInstance = axios.create({
-  baseURL: "https://prod-divine-server.vercel.app/",
+  baseURL: "https://prod-divine-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
