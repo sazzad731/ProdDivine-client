@@ -65,9 +65,12 @@ const MyRecommendations = () => {
 
   return (
     <div className="min-h-screen mt-20 pt-10">
-      <h2 className="text-center text-3xl mb-20">
+      <h2 className="text-center text-3xl mb-1">
         All the recommendations made by you
       </h2>
+      <p className="text-center mb-20 text-white/70">
+        Help others discover smarter options with your experience.
+      </p>
       <div>
         {isLoading ? (
           <Spinner />
@@ -123,7 +126,10 @@ const MyRecommendations = () => {
                       <div className="error-border">
                         <button
                           onClick={() =>
-                            handleDeleteRecommendation(product.queryId, product._id)
+                            handleDeleteRecommendation(
+                              product.queryId,
+                              product._id
+                            )
                           }
                           className="error-btn"
                         >

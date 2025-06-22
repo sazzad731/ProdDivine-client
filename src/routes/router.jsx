@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Queries from "../pages/Queries/Queries";
 import QueryDetails from "../pages/QueryDetails/QueryDetails";
 import MyRecommendations from "../pages/MyRecommendations/MyRecommendations";
+import RecommendationsForMe from "../pages/RecommendationsForMe/RecommendationsForMe";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/query-details/:id",
-        Component: QueryDetails
+        Component: QueryDetails,
       },
       {
         path: "/login",
@@ -52,9 +53,17 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/recommend-for-me",
+        element: <PrivateRoute><RecommendationsForMe/></PrivateRoute>
+      },
+      {
         path: "/my-recommendations",
-        element: <PrivateRoute><MyRecommendations/></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <MyRecommendations />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
