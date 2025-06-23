@@ -5,23 +5,31 @@ import Swal from 'sweetalert2';
 
 const axiosInstance = axios.create({
   baseURL: "https://prod-divine-server.vercel.app",
+  // baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
-  const { user, logOutUser } = useAuth();
+  const { logOutUser, auth } = useAuth();
 
-  axiosInstance.interceptors.request.use(config=>{
-    config.headers.authorization = `Bearer ${user?.accessToken}`;
-    return config;
+  axiosInstance.interceptors.request.use(
+    async (config) => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const token = await currentUser.getIdToken(); // ✅ The real Firebase ID token
+        config.headers.authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+
+  axiosInstance.interceptors.response.use((response) => {
+    return response;
   },
-    error => Promise.reject(error)
-  )
-
-
-  axiosInstance.interceptors.response.use(
-    (response) => response,
     (error) => {
-      if(error.status === 401){
+      console.log(error)
+      if(error.response?.status === 401){
         logOutUser().then(()=>{
           Swal.fire({
             title: 'Sign out user for 401 status code',
