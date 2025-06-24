@@ -55,9 +55,9 @@ const RecommendationSection = ({query, setUpdatedRecCount}) => {
           onSubmit={handleAddRecommendation}
           className="linear-border-l p-[1px] rounded-2xl"
         >
-          <div className="bg-first py-20 px-14 rounded-2xl">
+          <div className="bg-first md:py-20 py-14 md:px-14 px-5 rounded-2xl">
             <h2 className="text-center text-2xl mb-20">Recommend a Product</h2>
-            <div className="grid grid-cols-2 gap-5 mb-10">
+            <div className="grid md:grid-cols-2 gap-5 mb-10">
               <fieldset className="fieldset mb-3">
                 <legend className="fieldset-legend text-lg font-normal text-white">
                   Recommended Product Name

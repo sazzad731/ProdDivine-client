@@ -41,11 +41,11 @@ const AddQueries = () => {
   } 
 
   return (
-    <div className="flex flex-col justify-center min-h-screen">
+    <div className="min-h-screen md:mt-40 mt-24 mb-20">
       <form onSubmit={handleAddQuery} className="linear-border-l p-[1px] rounded-2xl z-30">
-        <div className="bg-first py-20 px-14 rounded-2xl">
-          <h2 className="text-center text-3xl mb-20">Add Queries</h2>
-          <div className="grid grid-cols-2 gap-5 mb-10">
+        <div className="bg-first md:py-20 py-14 md:px-14 px-5 rounded-2xl">
+          <h2 className="text-center text-3xl md:mb-20">Add Queries</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
             <fieldset className="fieldset mb-3">
               <legend className="fieldset-legend text-lg font-normal text-white">
                 Product Name
@@ -94,7 +94,7 @@ const AddQueries = () => {
                 required
               />
             </fieldset>
-            <fieldset className="fieldset mb-3 col-span-2">
+            <fieldset className="fieldset mb-3 md:col-span-2">
               <legend className="fieldset-legend text-lg font-normal text-white">
                 Boycotting Reason Details
               </legend>

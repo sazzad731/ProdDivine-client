@@ -38,12 +38,14 @@ const QueryDetails = () => {
         <Spinner />
       ) : (
         <div className="min-h-screen mt-20 mb-40 pt-20">
-          <div className="flex gap-5 mb-40">
-            <img
-              src={query?.productImage}
-              alt={query?.productName}
-              className="w-2xl"
-            />
+          <div className="flex flex-col lg:flex-row gap-5 mb-40">
+            <div className="flex justify-center">
+              <img
+                src={query?.productImage}
+                alt={query?.productName}
+                className="w-full xl:w-2xl"
+              />
+            </div>
             <div>
               <h4 className="text-2xl mb-7">{query?.productName}</h4>
               <p className="text-white/80 mb-3">
