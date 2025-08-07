@@ -1,6 +1,6 @@
 # 🌟 ProdDivine
 
-**ProdDivine** is a full-stack Product Recommendation Platform where users can post product-related queries, receive community suggestions, and share alternatives. It's built with React, Tailwind CSS, Firebase Authentication, Express.js, and MongoDB.
+**ProdDivine** is a MERN-stack product recommendation platform where users can post product-related queries, receive community suggestions, and share alternatives. It's built with React, Tailwind CSS, Firebase Authentication, Express.js, and MongoDB.
 
 ---
 
