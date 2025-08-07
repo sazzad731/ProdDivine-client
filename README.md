@@ -59,3 +59,16 @@
 - MongoDB
 - JWT Authentication (secured private routes)
 - Environment Variables for sensitive credentials
+
+---
+
+## 📦 Dependencies
+
+> Major dependencies only
+
+- `react`, `react-dom`, `react-router`
+- `firebase`
+- `axios`, `sweetalert2`
+- `tailwindcss`, `daisyui`
+- `react-icons`
+- `swiper`
