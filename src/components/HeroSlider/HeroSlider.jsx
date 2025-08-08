@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { Link } from 'react-router';
 
 const slides = [
   {
@@ -40,7 +41,7 @@ const HeroSlider = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="hero min-h-[80vh]"
+              className="hero min-h-[60vh]"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: "cover",
@@ -50,10 +51,12 @@ const HeroSlider = () => {
               <div className="hero-overlay bg-second/70"></div>
               <div className="hero-content text-center text-white">
                 <div className="flex flex-col items-center">
-                  <h1 className="mb-5 text-5xl font-bold">{slide.title}</h1>
+                  <h1 className="mb-5 text-5xl font-bold">
+                    {slide.title}
+                  </h1>
                   <p className="mb-10 text-lg max-w-md">{slide.desc}</p>
-                  <div className='btn-border'>
-                    <button className="primary-btn">Get Started</button>
+                  <div className="btn-border">
+                    <Link to="/login" className="primary-btn">Get Started</Link>
                   </div>
                 </div>
               </div>

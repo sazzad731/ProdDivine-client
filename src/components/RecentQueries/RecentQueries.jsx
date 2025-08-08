@@ -35,7 +35,7 @@ const RecentQueries = ({ recentQueryPromise }) => {
                   to={`/query-details/${query._id}`}
                   className="btn-border p-[1px]"
                 >
-                  <button className="primary-btn">View Details</button>
+                  <button className="primary-btn">See more</button>
                 </Link>
               </div>
             </div>
