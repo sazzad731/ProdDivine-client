@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react';
 import useRecommendationApi from '../../hooks/useRecommendationApi';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import Spinner from '../../components/Spinner/Spinner';
 
 const RecommendationsForMe = () => {
   const { user, loading } = useAuth();
   const { recommendationsForMePromise } = useRecommendationApi();
   const [ recommForMe, setRecommForMe ] = useState([]);
+  const [ loadingData, setLoadingData ] = useState(true);
 
   useEffect(()=>{
     if(user && !loading){
-      recommendationsForMePromise(user?.email).then(result=>setRecommForMe(result)).catch(err=>{
+      recommendationsForMePromise(user?.email).then(result=>{
+        setRecommForMe(result);
+        setLoadingData(false)
+      }).catch(err=>{
         Swal.fire({
           title: err.message,
           icon: "error"
@@ -23,20 +28,20 @@ const RecommendationsForMe = () => {
       <h2 className="text-center text-3xl mb-2">
         Suggestions Tailored for You
       </h2>
-      <p className="text-center mb-20 text-white/70">
+      <p className="text-center mb-20">
         See what others recommend based on your product concerns.
       </p>
       <div>
-        {recommForMe.length === 0 ? (
-          <h3 className="text-center mt-40 text-2xl text-white/60">
-            No Items found
-          </h3>
+        {loadingData ? (
+          <Spinner />
+        ) : recommForMe.length === 0 ? (
+          <h3 className="text-center mt-40 text-2xl">No Items found</h3>
         ) : (
           <div className="overflow-x-auto ">
             <table className="table">
               {/* head */}
               <thead>
-                <tr className="text-white border-b-white/10 text-xl">
+                <tr className="border-b-neutral/10 text-xl">
                   <th>Recommended Product</th>
                   <th>Over Product</th>
                   <th>Recommender</th>
@@ -45,7 +50,10 @@ const RecommendationsForMe = () => {
               <tbody>
                 {/* row */}
                 {recommForMe.map((product) => (
-                  <tr key={product._id} className="border-b border-b-white/10">
+                  <tr
+                    key={product._id}
+                    className="border-b border-b-neutral/10"
+                  >
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -60,7 +68,7 @@ const RecommendationsForMe = () => {
                           <div className="font-bold">
                             {product.recommendedProductName}
                           </div>
-                          <div className="text-sm opacity-50">
+                          <div className="text-sm opacity-80">
                             {product.recommendationTitle.slice(0, 20)}...
                           </div>
                         </div>
@@ -75,7 +83,9 @@ const RecommendationsForMe = () => {
                     </td>
                     <td>
                       <p>{product.recommenderName}</p>
-                      <p className='text-white/50'>{product.recommenderEmail}</p>
+                      <p>
+                        {product.recommenderEmail}
+                      </p>
                     </td>
                   </tr>
                 ))}

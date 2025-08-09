@@ -33,7 +33,7 @@ const AllRecommendations = ({ queryId, updatedRecomCount }) => {
               <img
                 src={recommendedProduct.recommendedProductImage}
                 alt={recommendedProduct.recommendedProductName}
-                className="w-24 rounded-3xl"/>
+                className="w-24 rounded-3xl ml-4"/>
               <div className="flex sm:flex-row flex-col sm:items-center justify-between w-full sm:px-5 sm:py-0 py-3">
                 <div>
                   <p>

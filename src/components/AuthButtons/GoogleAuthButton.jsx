@@ -9,11 +9,9 @@ const GoogleAuthButton = () => {
       .then(() =>{}).catch(err => console.log(err))
   }
   return (
-    <div className="btn-border">
-      <button onClick={handleGoogleSignIn} className="primary-btn gap-3">
-        <FcGoogle size={25} /> Continue with Google
-      </button>
-    </div>
+    <button onClick={handleGoogleSignIn} className="btn text-base btn-primary gap-3">
+      <FcGoogle size={25} /> Continue with Google
+    </button>
   );
 };
 

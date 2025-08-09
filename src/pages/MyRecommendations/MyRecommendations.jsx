@@ -67,14 +67,14 @@ const MyRecommendations = () => {
       <h2 className="text-center text-3xl mb-1">
         All the recommendations made by you
       </h2>
-      <p className="text-center mb-20 text-white/70">
+      <p className="text-center mb-20">
         Help others discover smarter options with your experience.
       </p>
       <div>
         {isLoading ? (
           <Spinner />
         ) : recommendations.length === 0 ? (
-          <h3 className="text-center mt-40 text-2xl text-white/60">
+          <h3 className="text-center mt-40 text-2xl">
             No Items found
           </h3>
         ) : (
@@ -82,7 +82,7 @@ const MyRecommendations = () => {
             <table className="table">
               {/* head */}
               <thead>
-                <tr className="text-white border-b-white/10 text-xl">
+                <tr className="border-b-neutral/10 text-xl">
                   <th>Recommended Product</th>
                   <th>Over Product</th>
                   <th>Query Creator</th>
@@ -92,7 +92,7 @@ const MyRecommendations = () => {
               <tbody>
                 {/* row */}
                 {recommendations.map((product) => (
-                  <tr key={product._id} className="border-b border-b-white/10">
+                  <tr key={product._id} className="border-b border-b-neutral/10">
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
@@ -107,7 +107,7 @@ const MyRecommendations = () => {
                           <div className="font-bold">
                             {product.recommendedProductName}
                           </div>
-                          <div className="text-sm opacity-50">
+                          <div className="text-sm opacity-80">
                             {product.recommendationTitle.slice(0, 20)}...
                           </div>
                         </div>
@@ -122,7 +122,6 @@ const MyRecommendations = () => {
                     </td>
                     <td>{product.userName}</td>
                     <th className="flex pt-5">
-                      <div className="error-border">
                         <button
                           onClick={() =>
                             handleDeleteRecommendation(
@@ -130,11 +129,10 @@ const MyRecommendations = () => {
                               product._id
                             )
                           }
-                          className="error-btn"
+                          className="btn btn-primary"
                         >
                           <FaTrashAlt size={20} />
                         </button>
-                      </div>
                     </th>
                   </tr>
                 ))}

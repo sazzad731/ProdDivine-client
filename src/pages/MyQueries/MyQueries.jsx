@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
+import { FaTrash, FaEdit, FaEye } from "react-icons/fa";
 import AddQueryBanner from "../../components/AddQueryBanner/AddQueryBanner";
 import useApi from "../../hooks/useApi";
 import useAuth from "../../hooks/useAuth";
@@ -79,28 +79,32 @@ const MyQueries = () => {
         <Spinner />
       ) : queries.length === 0 ? (
         <div className="text-center mt-20 space-y-4">
-          <p className="text-lg text-white/70">No queries found!</p>
+          <p className="text-lg">No queries found!</p>
         </div>
       ) : (
         <div className="mt-20">
           <h2 className="text-center text-4xl mb-5">My Queries</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {queries?.map((query) => (
-              <div key={query._id} className="card bg-first shadow-md p-4">
+              <div
+                key={query._id}
+                className="card bg-secondary/20 shadow-md rounded-2xl"
+              >
                 <Modal
                   query={selectedQuery}
-                  isUpdated={isUpdated} 
+                  isUpdated={isUpdated}
                   setIsUpdated={setIsUpdated}
                 />
                 <img
                   src={query.productImage}
                   alt={query.productName}
-                  className="object-cover rounded h-96"
+                  className="object-cover rounded h-64 rounded-t-2xl"
                 />
                 <div className="card-body justify-between space-y-2">
                   <div>
                     <h2 className="text-xl font-semibold mb-3">
-                      {query.productName}
+                      {query.productName.slice(0, 20)}
+                      {query.productName.length > 20 && " ..."}
                     </h2>
                     <p className="text-sm mb-2">
                       <span className="text-lg font-medium">Query Title:</span>{" "}
@@ -110,18 +114,21 @@ const MyQueries = () => {
                       <span className="text-lg font-medium">
                         Boycott Reason:
                       </span>{" "}
-                      {query?.boycottReason}
+                      {query.boycottReason.length > 30
+                        ? query.boycottReason.slice(0, 60)
+                        : query.boycottReason}
+                      {query.boycottReason.length > 30 && " ...."}
                     </p>
                   </div>
                   <div className="flex justify-end gap-5 mt-4">
                     <Link to={`/query-details/${query._id}`}>
-                      <button className="btn btn-sm btn-outline">
+                      <button className="btn btn-sm btn-outline btn-primary">
                         <FaEye size={20} />
                       </button>
                     </Link>
                     <button
                       onClick={() => handleOpenModal(query)}
-                      className="btn btn-sm btn-outline btn-success"
+                      className="btn btn-sm btn-outline btn-primary"
                     >
                       <FaEdit size={20} />
                     </button>
