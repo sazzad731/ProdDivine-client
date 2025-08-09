@@ -22,28 +22,26 @@ const AllRecommendations = ({ queryId, updatedRecomCount }) => {
       <h3 className="text-2xl mb-5">Recommendations</h3>
       <div>
         {recommendations.length === 0 ? (
-          <p className="text-xl text-center text-white/70">
+          <p className="text-xl text-center">
             No Recommendation found
           </p>
         ) : (
           recommendations.map((recommendedProduct) => (
-            <Link
+            <div
               key={recommendedProduct._id}
-              className="flex sm:gap-0 gap-3 items-center bg-first rounded-3xl"
-            >
+              className="flex sm:gap-0 gap-3 items-center bg-secondary/30 rounded-3xl py-4">
               <img
                 src={recommendedProduct.recommendedProductImage}
                 alt={recommendedProduct.recommendedProductName}
-                className="w-24 rounded-3xl"
-              />
+                className="w-24 rounded-3xl"/>
               <div className="flex sm:flex-row flex-col sm:items-center justify-between w-full sm:px-5 sm:py-0 py-3">
                 <div>
-                  <p className="text-white/80">
-                    <span className="sm:text-xl text-white font-medium">Name:</span>{" "}
+                  <p>
+                    <span className="sm:text-xl font-medium">Name:</span>{" "}
                     {recommendedProduct.recommendedProductName}
                   </p>
-                  <p className="text-white/80">
-                    <span className="sm:text-xl text-white font-medium">Title:</span>{" "}
+                  <p>
+                    <span className="sm:text-xl font-medium">Title:</span>{" "}
                     {recommendedProduct.recommendationTitle}
                   </p>
                   <p>By {recommendedProduct.recommenderName}</p>
@@ -52,7 +50,7 @@ const AllRecommendations = ({ queryId, updatedRecomCount }) => {
                   {new Date(recommendedProduct.timestamp).toLocaleDateString()}
                 </p>
               </div>
-            </Link>
+            </div>
           ))
         )}
         

@@ -47,59 +47,59 @@ const RecommendationSection = ({query, setUpdatedRecCount}) => {
       <h2 className="text-center text-3xl font-semibold mb-2">
         Recommend a Better Alternative
       </h2>
-      <p className="text-center text-white/70 mb-10">
+      <p className="text-center mb-10">
         Help others discover smarter options with your experience.
       </p>
       <div>
         <form
           onSubmit={handleAddRecommendation}
-          className="linear-border-l p-[1px] rounded-2xl"
+          className="rounded-2xl"
         >
-          <div className="bg-first md:py-20 py-14 md:px-14 px-5 rounded-2xl">
+          <div className="bg-primary/20 md:py-20 py-14 md:px-14 px-5 rounded-2xl">
             <h2 className="text-center text-2xl mb-20">Recommend a Product</h2>
             <div className="grid md:grid-cols-2 gap-5 mb-10">
               <fieldset className="fieldset mb-3">
-                <legend className="fieldset-legend text-lg font-normal text-white">
+                <legend className="fieldset-legend text-lg font-normal">
                   Recommended Product Name
                 </legend>
                 <input
                   type="text"
-                  className="input focus:outline-third border-[1px] border-third w-full bg-second"
+                  className="input focus:outline-primary border border-primary w-full bg-base-100"
                   placeholder="Type here"
                   name="recommendedProductName"
                   required
                 />
               </fieldset>
               <fieldset className="fieldset mb-3">
-                <legend className="fieldset-legend text-lg font-normal text-white">
+                <legend className="fieldset-legend text-lg font-normal">
                   Recommendation Title
                 </legend>
                 <input
                   type="text"
-                  className="input focus:outline-third border-[1px] border-third w-full bg-second"
+                  className="input focus:outline-primary border border-primary w-full bg-base-100"
                   placeholder="Type here"
                   name="recommendationTitle"
                   required
                 />
               </fieldset>
               <fieldset className="fieldset mb-3">
-                <legend className="fieldset-legend text-lg font-normal text-white">
+                <legend className="fieldset-legend text-lg font-normal">
                   Recommended Product Image
                 </legend>
                 <input
                   type="url"
-                  className="input focus:outline-third border-[1px] border-third w-full bg-second"
+                  className="input focus:outline-primary border border-primary w-full bg-base-100"
                   placeholder="Type here Image url"
                   name="recommendedProductImage"
                   required
                 />
               </fieldset>
               <fieldset className="fieldset mb-3">
-                <legend className="fieldset-legend text-lg font-normal text-white">
+                <legend className="fieldset-legend text-lg font-normal">
                   Recommendation reason
                 </legend>
                 <textarea
-                  className="input focus:outline-third border-[1px] border-third w-full bg-second  text-lg text-wrap"
+                  className="input focus:outline-primary border border-primary w-full bg-base-100  text-lg text-wrap"
                   placeholder="Type here"
                   name="recommendationReason"
                   required
@@ -107,11 +107,9 @@ const RecommendationSection = ({query, setUpdatedRecCount}) => {
               </fieldset>
             </div>
             <div className="flex items-center justify-center">
-              <div className="btn-border">
-                <button type="submit" className="primary-btn">
-                  Add Recommendation
-                </button>
-              </div>
+              <button type="submit" className="btn btn-primary text-lg">
+                Add Recommendation
+              </button>
             </div>
           </div>
         </form>

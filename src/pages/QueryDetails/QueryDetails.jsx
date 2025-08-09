@@ -43,31 +43,31 @@ const QueryDetails = () => {
               <img
                 src={query?.productImage}
                 alt={query?.productName}
-                className="w-full xl:w-2xl"
+                className="w-full xl:w-2xl rounded-2xl"
               />
             </div>
             <div>
               <h4 className="text-2xl mb-7">{query?.productName}</h4>
-              <p className="text-white/80 mb-3">
-                <span className="text-lg text-white">Brand:</span>{" "}
+              <p className="mb-3">
+                <span className="text-lg">Brand:</span>{" "}
                 {query?.productBrand}
               </p>
-              <p className="text-white/80 mb-3">
-                <span className="text-lg text-white">Query Title: </span>
+              <p className="mb-3">
+                <span className="text-lg">Query Title: </span>
                 {query?.queryTitle}
               </p>
-              <p className="text-white/80 mb-3">
-                <span className="text-lg text-white">Boycotting Reason: </span>
+              <p className="mb-3">
+                <span className="text-lg">Boycotting Reason: </span>
                 {query?.boycottReason}
               </p>
-              <p className="text-white/80 mb-3">
-                <span className="text-lg text-white">Recommendation: </span>
+              <p className="mb-3">
+                <span className="text-lg">Recommendation: </span>
                 {query?.recommendationCount + updatedRecomCount}
               </p>
 
               <div>
-                <p className="mb-2">Author:</p>
-                <div className="flex items-center gap-5">
+                <p className="mb-2">Created by:</p>
+                <div className="flex items-center gap-3">
                   <div className="avatar">
                     <div className="w-14 rounded-full">
                       <img src={query.profile} />
