@@ -10,27 +10,23 @@ const JoinProdDivine = () => {
         Join our vibrant community of product enthusiasts and experts to share
         your knowledge and discover new products.
       </p>
-      <div className="grid md:grid-cols-2 lg:gap-10 gap-7">
-        <div className="linear-border-l p-[1px] rounded-xl">
-          <div className="bg-first rounded-xl p-5 w-full h-full">
+      <div className="grid md:grid-cols-2 lg:gap-10 gap-7 text-neutral">
+          <div className="bg-primary/30 rounded-xl p-5 w-full h-full">
             <img src={expert} alt="image" className="mb-5 w-full"/>
             <h4 className="text-xl font-bold mb-2">Connect with Experts</h4>
-            <p className="font-light text-white/70">
+            <p className="font-light">
               Engage with experienced users and industry professionals to get
               valuable advice and recommendations.
             </p>
           </div>
-        </div>
-        <div className="linear-border-r p-[1px] rounded-xl">
-          <div className="bg-first rounded-xl p-5 w-full h-full">
+          <div className="bg-primary/30 rounded-xl p-5 w-full h-full">
             <img src={insights} alt="image" className="mb-5 w-full" />
             <h4 className="text-xl font-bold mb-2">Share Your Insights</h4>
-            <p className="font-light text-white/70">
+            <p className="font-light">
               Contribute to the community by sharing your product experiences
               and insights with other users.
             </p>
           </div>
-        </div>
       </div>
     </div>
   );

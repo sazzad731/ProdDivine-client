@@ -14,8 +14,8 @@ const EasySteps = () => {
         help you discover <br className="hidden md:block" /> the best products
         for your needs.
       </p>
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-8 gap-4 text-white">
-          <div className="bg-primary rounded-xl p-5 w-full h-full">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-8 gap-4 text-neutral">
+          <div className="bg-primary/30 rounded-xl p-5 w-full h-full">
             <IoMdSearch size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">Create Your Query</h4>
             <p className="font-light">
@@ -23,7 +23,7 @@ const EasySteps = () => {
               recommendations.
             </p>
           </div>
-          <div className="bg-primary rounded-xl p-5 w-full h-full">
+          <div className="bg-primary/30 rounded-xl p-5 w-full h-full">
             <PiUsers size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">Connect with Experts</h4>
             <p className="font-light">
@@ -31,7 +31,7 @@ const EasySteps = () => {
               your queries.
             </p>
           </div>
-          <div className="bg-primary rounded-xl p-5 w-full h-full">
+          <div className="bg-primary/30 rounded-xl p-5 w-full h-full">
             <BiLike size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">
               Get Personalized Recommendations
