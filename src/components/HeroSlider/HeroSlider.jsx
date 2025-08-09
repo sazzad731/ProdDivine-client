@@ -48,16 +48,17 @@ const HeroSlider = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="hero-overlay bg-second/70"></div>
+              <div className="hero-overlay bg-black/60"></div>
               <div className="hero-content text-center text-white">
                 <div className="flex flex-col items-center">
-                  <h1 className="mb-5 text-5xl font-bold">
-                    {slide.title}
-                  </h1>
+                  <h1 className="mb-5 text-5xl font-bold">{slide.title}</h1>
                   <p className="mb-10 text-lg max-w-md">{slide.desc}</p>
-                  <div className="btn-border">
-                    <Link to="/login" className="primary-btn">Get Started</Link>
-                  </div>
+                  <Link
+                    to="/login"
+                    className="btn btn-primary text-xl text-neutral"
+                  >
+                    Get Started
+                  </Link>
                 </div>
               </div>
             </div>
