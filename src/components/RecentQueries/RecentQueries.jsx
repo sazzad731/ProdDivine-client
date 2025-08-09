@@ -9,7 +9,7 @@ const RecentQueries = ({ recentQueryPromise }) => {
       <h2 className="text-3xl mb-10">Recent Queries</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {recentQuery?.slice(0, 4)?.map((query) => (
-          <div key={query._id} className="card bg-secondary/30 shadow-md rounded-2xl">
+          <div key={query._id} className="card bg-secondary/20 shadow-md rounded-2xl">
             <img
               src={query.productImage}
               alt={query.productName}

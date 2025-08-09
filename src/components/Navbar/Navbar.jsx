@@ -95,7 +95,7 @@ const Navbar = () => {
       {!user && (
         <Link
           to="/login"
-          className="btn btn-outline btn-primary w-full sm:w-22"
+          className="btn btn-outline btn-primary w-full sm:w-24 text-base"
         >
           Log in
         </Link>
@@ -103,7 +103,7 @@ const Navbar = () => {
       {user && (
         <button
           onClick={handleLogOut}
-          className="btn btn-outline btn-primary w-full sm:w-22"
+          className="btn btn-outline btn-primary w-full sm:w-24 text-base"
         >
           Log out
         </button>

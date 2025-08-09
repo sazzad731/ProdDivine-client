@@ -19,6 +19,7 @@ const Queries = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
+    setLoading(true)
     allQueriesPromise(searchValue)
       .then((result) => {
         setQueries(result);
@@ -38,57 +39,72 @@ const Queries = () => {
 
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className="min-h-screen mt-20 pt-20 mb-20">
-          <h2 className="text-3xl text-center mb-5">
-            Explore All Product Concerns
-          </h2>
-          <p className="text-center text-xl text-white/70 mb-10">
-            Discover what others are questioning. Help shape smarter choices.
-          </p>
-          <div className="mb-20 max-w-2xl mx-auto relative">
-            <IoSearch
-              size={20}
-              className="absolute left-3 bottom-[10px] z-20 text-white/50"
-            />
-            <input
-              type="search"
-              ref={searchRef}
-              onChange={() => setSearchValue(searchRef?.current.value)}
-              className="input focus:outline-third border-[1px] border-third w-full bg-second pl-10 rounded-full"
-              name="search"
-              placeholder="Search here"
-            />
-          </div>
-          <div className="mb-5 join hidden lg:block">
-            <button
-              onClick={() => {
-                setGridCol2("grid-cols-2");
-                setIsActive("gridCol2");
-              }}
-              className={`btn ${isActive === "gridCol2" && "bg-white/70"}`}
-            >
-              <BsGridFill />
-            </button>
-            <button
-              onClick={() => {
-                setGridCol3("grid-cols-3");
-                setIsActive("gridCol3");
-              }}
-              className={`btn ${isActive === "gridCol3" && "bg-white/70"}`}
-            >
-              <BsFillGrid3X2GapFill size={20} />
-            </button>
-          </div>
-          <div className={`grid sm:grid-cols-2 lg:${isActive === "gridCol2" ? gridCol2 : isActive === "gridCol3" &&  gridCol3} gap-7`}>
+      <div className="min-h-screen mt-20 pt-20 mb-20">
+        <h2 className="text-3xl text-center mb-5">
+          Explore All Product Concerns
+        </h2>
+        <p className="text-center text-xl mb-10">
+          Discover what others are questioning. Help shape smarter choices.
+        </p>
+        <div className="mb-20 max-w-2xl mx-auto relative">
+          <IoSearch
+            size={20}
+            className="absolute left-3 bottom-[10px] z-20 text-neutral"
+          />
+          <input
+            type="search"
+            ref={searchRef}
+            onChange={() => setSearchValue(searchRef?.current.value)}
+            className="input focus:outline-primary border-[1px] border-primary w-full bg-white dark:bg-base-300 pl-10 rounded-full"
+            name="search"
+            placeholder="Search here"
+          />
+        </div>
+        <div className="mb-5 join hidden lg:block">
+          <button
+            onClick={() => {
+              setGridCol2("grid-cols-2");
+              setIsActive("gridCol2");
+            }}
+            className={`btn ${
+              isActive === "gridCol2" ? "bg-secondary/70" : "bg-secondary/30"
+            }`}
+          >
+            <BsGridFill />
+          </button>
+          <button
+            onClick={() => {
+              setGridCol3("grid-cols-3");
+              setIsActive("gridCol3");
+            }}
+            className={`btn ${
+              isActive === "gridCol3" ? "bg-secondary/70" : "bg-secondary/30"
+            }`}
+          >
+            <BsFillGrid3X2GapFill size={20} />
+          </button>
+        </div>
+        {loading ? (
+          <Spinner />
+        ) : queries.length === 0 ? (
+          <h3 className="text-center mt-36 text-2xl">No Data found</h3>
+        ) : (
+          <div
+            className={`grid sm:grid-cols-2 lg:${
+              isActive === "gridCol2"
+                ? gridCol2
+                : isActive === "gridCol3" && gridCol3
+            } gap-7`}
+          >
             {queries?.map((query) => (
-              <div key={query._id} className="card bg-first shadow-md p-4">
+              <div
+                key={query._id}
+                className="card bg-secondary/20 shadow-md rounded-2xl"
+              >
                 <img
                   src={query.productImage}
                   alt={query.productName}
-                  className="object-cover rounded h-96"
+                  className="object-cover h-85 rounded-t-2xl"
                 />
                 <div className="card-body justify-between space-y-2">
                   <div>
@@ -96,16 +112,14 @@ const Queries = () => {
                       {query.productName.length > 30
                         ? query.productName.slice(0, 30)
                         : query.productName}
-                      {query.productName.length > 30 && " ...."}
+                      {query.productName.length > 20 && " ...."}
                     </h2>
-                    <p className="text-sm mb-2 text-white/80">
-                      <span className="text-lg font-medium text-white">
-                        Query Title:
-                      </span>{" "}
+                    <p className="text-sm mb-2">
+                      <span className="text-lg font-medium">Query Title:</span>{" "}
                       {query.queryTitle}
                     </p>
-                    <p className="text-white/80">
-                      <span className="text-lg font-medium text-white">
+                    <p className="">
+                      <span className="text-lg font-medium">
                         Boycott Reason:
                       </span>{" "}
                       {query.boycottReason.length > 30
@@ -118,21 +132,19 @@ const Queries = () => {
                     <span className="text-lg xl:mb-0 mb-10">
                       Recommendation: {query.recommendationCount}
                     </span>
-                    <div className="btn-border">
-                      <Link
-                        to={`/query-details/${query._id}`}
-                        className="primary-btn text-lg"
-                      >
-                        Recommend
-                      </Link>
-                    </div>
+                    <Link
+                      to={`/query-details/${query._id}`}
+                      className="btn btn-primary text-lg"
+                    >
+                      Recommend
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
