@@ -16,6 +16,8 @@
   themes: light --default, dark --prefersdark;
 }
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -24,6 +26,7 @@
   --color-secondary: #9fc6d5;
   --color-accent: #71b7d1;
   --color-base-100: #EFF1F3;
+  --color-base-300: #000000;
 }
 
 @plugin "daisyui/theme" {
@@ -33,6 +36,7 @@
   --color-secondary: #2a5060;
   --color-accent: #2e758e;
   --color-base-100: #0b0d0f;
+  --color-base-300: #16181A;
 }
 
 

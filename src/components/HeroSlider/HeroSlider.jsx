@@ -55,7 +55,7 @@ const HeroSlider = () => {
                   <p className="mb-10 text-lg max-w-md">{slide.desc}</p>
                   <Link
                     to="/login"
-                    className="btn btn-primary text-xl text-neutral"
+                    className="btn btn-primary text-xl text-white"
                   >
                     Get Started
                   </Link>

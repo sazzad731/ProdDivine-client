@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import ThemeBtn from "../ThemeBtn/ThemeBtn";
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
 
@@ -88,9 +89,9 @@ const Navbar = () => {
       )}
     </>
   );
+
   const authButtons = (
     <>
-      {/* btn-border custom class */}
       {!user && (
         <Link
           to="/login"
@@ -145,8 +146,9 @@ const Navbar = () => {
       <div className="navbar-center hidden xl:flex">
         <ul className="menu-horizontal gap-7 text-white">{navMenu}</ul>
       </div>
-      <div className="navbar-end text-white w-full hidden sm:inline-flex">
-        {authButtons}
+      <div className="navbar-end w-full gap-4">
+        <ThemeBtn />
+        <div className="hidden sm:inline-flex">{authButtons}</div>
       </div>
     </div>
   );
