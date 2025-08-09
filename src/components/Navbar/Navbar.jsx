@@ -28,8 +28,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `${
-              isActive && "border-b-2 text-white/100 font-medium"
-            } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+              isActive && "border-neutral border-b-2 text-neutral"
+            } pb-1 text-lg hover:border-b-2 text-neutral`
           }
         >
           Home
@@ -40,8 +40,8 @@ const Navbar = () => {
           to="/queries"
           className={({ isActive }) =>
             `${
-              isActive && "border-b-2 text-white/100 font-medium"
-            } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+              isActive && "border-b-2 text-neutral"
+            } pb-1 text-lg hover:border-b-2 text-neutral`
           }
         >
           Queries
@@ -54,8 +54,8 @@ const Navbar = () => {
               to="/recommend-for-me"
               className={({ isActive }) =>
                 `${
-                  isActive && "border-b-2 text-white/100 font-medium"
-                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+                  isActive && "border-b-2 text-neutral"
+                } pb-1 text-lg hover:border-b-2 text-neutral`
               }
             >
               Recommendations For Me
@@ -66,8 +66,8 @@ const Navbar = () => {
               to="/my-queries"
               className={({ isActive }) =>
                 `${
-                  isActive && "border-b-2 text-white/100 font-medium"
-                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+                  isActive && "border-b-2 text-neutral"
+                } pb-1 text-lg hover:border-b-2 text-neutral`
               }
             >
               My Queries
@@ -78,8 +78,8 @@ const Navbar = () => {
               to="/my-recommendations"
               className={({ isActive }) =>
                 `${
-                  isActive && "border-b-2 text-white/100 font-medium"
-                } pb-1 text-lg font-normal hover:border-b-2 text-white/80`
+                  isActive && "border-b-2 text-neutral"
+                } pb-1 text-lg hover:border-b-2 text-neutral`
               }
             >
               My Recommendations
@@ -93,22 +93,25 @@ const Navbar = () => {
     <>
       {/* btn-border custom class */}
       {!user && (
-        <Link to="/login" className="btn-border">
-          {/* primary-btn custom class */}
-          <button className="primary-btn">Log in</button>
+        <Link
+          to="/login"
+          className="btn btn-outline btn-primary w-full sm:w-22"
+        >
+          Log in
         </Link>
       )}
       {user && (
-        <div className="warning-border">
-          <button onClick={handleLogOut} className="warning-btn">
-            Log out
-          </button>
-        </div>
+        <button
+          onClick={handleLogOut}
+          className="btn btn-outline btn-primary w-full sm:w-22"
+        >
+          Log out
+        </button>
       )}
     </>
   );
   return (
-    <div className="navbar shadow-sm w-full 2xl:w-[93.75rem] mx-auto mt-2 bg-first rounded-xl px-5 fixed left-0 right-0 z-50">
+    <div className="navbar w-full 2xl:w-[93.75rem] mx-auto">
       <div className="navbar-start w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">

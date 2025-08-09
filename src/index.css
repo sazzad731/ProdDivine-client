@@ -11,6 +11,32 @@
   --color-third: #9A38C4;
 }
 
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-neutral: #111212;
+  --color-primary: #6796a8;
+  --color-secondary: #9fc6d5;
+  --color-accent: #71b7d1;
+  --color-base-100: #EFF1F3;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-neutral: #edeeee;
+  --color-primary: #578598;
+  --color-secondary: #2a5060;
+  --color-accent: #2e758e;
+  --color-base-100: #0b0d0f;
+}
+
+
+
 @layer components{
   .primary-btn{
     @apply flex items-center justify-center px-7 py-2 cursor-pointer rounded-2xl bg-linear-[45deg] from-second from-60% to-third font-normal w-full;
