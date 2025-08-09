@@ -6,8 +6,6 @@ import Footer from '../components/Footer/Footer';
 const RootLayout = () => {
   return (
     <div className="bg-base-100 relative w-full 2xl:px-0 px-2 text-base-content overflow-hidden">
-      <div className="absolute left-20 top-40 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(144,52,183,0.2)_0%,_transparent_70%)] pointer-events-none z-0 blur-2xl"></div>
-      <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(144,52,183,0.2)_0%,_transparent_70%)] pointer-events-none z-0 blur-2xl"></div>
       <header className="font-inter bg-white shadow fixed left-0 right-0 z-50">
         <Navbar />
       </header>

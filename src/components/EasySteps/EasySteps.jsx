@@ -14,39 +14,33 @@ const EasySteps = () => {
         help you discover <br className="hidden md:block" /> the best products
         for your needs.
       </p>
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-8 gap-4">
-        <div className="linear-border-l p-[1px] rounded-xl">
-          <div className="bg-first rounded-xl p-5 w-full h-full">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:gap-8 gap-4 text-white">
+          <div className="bg-primary rounded-xl p-5 w-full h-full">
             <IoMdSearch size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">Create Your Query</h4>
-            <p className="font-light text-white/70">
+            <p className="font-light">
               Describe your needs and preferences in detail to get the best
               recommendations.
             </p>
           </div>
-        </div>
-        <div className="linear-border-l bg-linear-[-70deg] sm:bg-linear-[70deg] p-[1px] rounded-xl">
-          <div className="bg-first rounded-xl p-5 w-full h-full">
+          <div className="bg-primary rounded-xl p-5 w-full h-full">
             <PiUsers size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">Connect with Experts</h4>
-            <p className="font-light text-white/70">
+            <p className="font-light">
               Join our community of product enthusiasts and experts to discuss
               your queries.
             </p>
           </div>
-        </div>
-        <div className="linear-border-l p-[1px] rounded-xl">
-          <div className="bg-first rounded-xl p-5 w-full h-full">
+          <div className="bg-primary rounded-xl p-5 w-full h-full">
             <BiLike size={30} className="mb-3" />
             <h4 className="text-xl font-bold mb-2">
               Get Personalized Recommendations
             </h4>
-            <p className="font-light text-white/70">
+            <p className="font-light">
               Receive tailored recommendations based on your specific
               requirements and feedback.
             </p>
           </div>
-        </div>
       </div>
     </div>
   );

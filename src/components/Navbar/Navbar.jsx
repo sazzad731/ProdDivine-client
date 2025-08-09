@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router";
-import logo from "../../assets/img/logo.png"
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
@@ -117,7 +116,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-white"
+              className="h-5 w-5 text-neutral"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -133,14 +132,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu gap-2 dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-first text-white"
+            className="menu gap-2 dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-white text-neutral"
           >
             {navMenu}
             <div className="sm:hidden block">{authButtons}</div>
           </ul>
         </div>
-        <NavLink to="/">
-          <img className="w-36" src={logo} alt="Logo" />
+        <NavLink to="/" className="text-2xl font-bold text-neutral">
+          ProdDivine
         </NavLink>
       </div>
       <div className="navbar-center hidden xl:flex">

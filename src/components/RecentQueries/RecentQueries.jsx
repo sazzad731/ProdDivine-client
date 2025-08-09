@@ -1,6 +1,5 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
-import { FaPlus, FaTrash, FaEdit, FaEye } from "react-icons/fa";
 
 
 const RecentQueries = ({ recentQueryPromise }) => {
@@ -8,8 +7,8 @@ const RecentQueries = ({ recentQueryPromise }) => {
   return (
     <div className="mb-40">
       <h2 className="text-3xl mb-10">Recent Queries</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {recentQuery?.map((query) => (
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {recentQuery?.slice(0, 4)?.map((query) => (
           <div key={query._id} className="card bg-secondary/30 shadow-md rounded-2xl">
             <img
               src={query.productImage}
