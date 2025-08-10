@@ -63,7 +63,7 @@ const Queries = () => {
             placeholder="Search here"
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-end lg:justify-between">
           <div className="mb-5 join hidden lg:block">
             <button
               onClick={() => {
@@ -93,7 +93,7 @@ const Queries = () => {
             ref={sortRef}
             onChange={()=>setSort(sortRef?.current?.value)}
             defaultValue="Sort by Recommendation"
-            className="select text-neutral"
+            className="select text-neutral mb-5"
           >
             <option>Sort by Recommendation</option>
             <option value="asc">Ascending</option>
