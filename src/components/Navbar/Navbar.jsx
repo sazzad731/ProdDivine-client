@@ -87,6 +87,18 @@ const Navbar = () => {
           </li>
         </>
       )}
+      <li>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) =>
+            `${
+              isActive && "border-b-2 text-neutral"
+            } pb-1 text-lg hover:border-b-2 text-neutral`
+          }
+        >
+          About us
+        </NavLink>
+      </li>
     </>
   );
 
@@ -133,7 +145,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu gap-2 dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-white text-neutral"
+            className="menu gap-2 dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow bg-white dark:bg-base-300 text-neutral"
           >
             {navMenu}
             <div className="sm:hidden block">{authButtons}</div>

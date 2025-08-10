@@ -134,7 +134,7 @@ const MyQueries = () => {
                     </button>
                     <button
                       onClick={() => handleDeleteQuery(query?._id)}
-                      className="btn btn-sm btn-outline btn-error"
+                      className="btn btn-sm btn-outline btn-primary"
                     >
                       <FaTrash size={20} />
                     </button>

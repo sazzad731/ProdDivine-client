@@ -11,6 +11,7 @@ import Queries from "../pages/Queries/Queries";
 import QueryDetails from "../pages/QueryDetails/QueryDetails";
 import MyRecommendations from "../pages/MyRecommendations/MyRecommendations";
 import RecommendationsForMe from "../pages/RecommendationsForMe/RecommendationsForMe";
+import AboutUs from "../pages/AboutUs/AboutUs";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/queries",
         Component: Queries,
+      },
+      {
+        path: "/about-us",
+        Component: AboutUs
       },
       {
         path: "/query-details/:id",

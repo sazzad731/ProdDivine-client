@@ -4,12 +4,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-base-300">
-      <div className="footer flex justify-between flex-col sm:flex-row text-neutral-content p-10 max-w-[93.75rem] mx-auto">
+      <div className="footer flex justify-between flex-col sm:flex-row text-neutral-content py-10 2xl:px-0 px-2 max-w-[93.75rem] mx-auto">
         <aside>
           <NavLink to="/" className="text-2xl font-bold dark:text-neutral">
             ProdDivine
           </NavLink>
-          <p>
+          <p className="hidden sm:block">
             Copyright © {new Date().getFullYear()} - All right reserved by
             ProdDivine
           </p>
@@ -34,6 +34,10 @@ const Footer = () => {
               <FaLinkedin className="text-2xl" />
             </a>
           </div>
+          <p className="sm:hidden mt-5">
+            Copyright © {new Date().getFullYear()} - All right reserved by
+            ProdDivine
+          </p>
         </nav>
       </div>
     </footer>

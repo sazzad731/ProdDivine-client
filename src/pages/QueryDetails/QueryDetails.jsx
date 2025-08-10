@@ -37,7 +37,7 @@ const QueryDetails = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="min-h-screen mt-20 mb-40 pt-20">
+        <div className="min-h-screen mt-24 mb-40">
           <div className="flex flex-col lg:flex-row gap-5 mb-40">
             <div className="flex justify-center">
               <img
