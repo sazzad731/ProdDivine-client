@@ -5,6 +5,7 @@ import JoinProdDivine from '../../components/JoinProdDivine/JoinProdDivine';
 import RecentQueries from '../../components/RecentQueries/RecentQueries';
 import Spinner from "../../components/Spinner/Spinner"
 import useApi from '../../hooks/useApi';
+import TopContributor from '../../components/TopContributor/TopContributor';
 
 const Home = () => {
   const { recentQueryPromise } = useApi();
@@ -15,7 +16,8 @@ const Home = () => {
         <RecentQueries recentQueryPromise={recentQueryPromise()} />
       </Suspense>
       <EasySteps />
-     <JoinProdDivine/>
+      <JoinProdDivine />
+      <TopContributor/>
     </>
   );
 };
