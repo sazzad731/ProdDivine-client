@@ -8,8 +8,8 @@ const useApi = () => {
     return axiosSecure.get("/recent-query").then(res => res.data);
   }
 
-  const allQueriesPromise = useCallback((name)=>{
-    return axiosSecure.get(`/queries?search=${name}`).then(res => res.data);
+  const allQueriesPromise = useCallback((name, sort)=>{
+    return axiosSecure.get(`/queries?search=${name}&&sort=${sort}`).then(res => res.data);
   }, [ axiosSecure ])
   
 

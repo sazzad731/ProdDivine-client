@@ -41,7 +41,7 @@ const HeroSlider = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="hero min-h-[60vh]"
+              className="hero h-[600px]"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: "cover",

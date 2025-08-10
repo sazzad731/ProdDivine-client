@@ -55,11 +55,12 @@ const AboutUs = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="grid md:grid-cols-2 gap-8 mt-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-8 mt-12 items-center">
         <img
-          src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
+          // src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
+          src="https://stackbros.in/q&a/assets/images/elements/02.svg"
           alt="Community sharing ideas"
-          className="rounded-xl"
+          className="rounded-xl w-full"
         />
         <div>
           <h2 className="text-2xl font-bold mb-2">

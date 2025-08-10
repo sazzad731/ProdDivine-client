@@ -17,10 +17,13 @@ const Queries = () => {
   const [ gridCol3, setGridCol3 ] = useState("grid-cols-3");
   const [ isActive, setIsActive ] = useState("gridCol3");
   const navigate = useNavigate();
+  const [ sort, setSort ] = useState("");
+  const sortRef = useRef()
+
 
   useEffect(()=>{
     setLoading(true)
-    allQueriesPromise(searchValue)
+    allQueriesPromise(searchValue, sort)
       .then((result) => {
         setQueries(result);
         setLoading(false);
@@ -33,7 +36,7 @@ const Queries = () => {
         setLoading(false);
         navigate("/not-found");
       });
-  }, [ allQueriesPromise, navigate, searchValue ])
+  }, [ allQueriesPromise, navigate, searchValue, sort ])
   
 
 
@@ -60,29 +63,42 @@ const Queries = () => {
             placeholder="Search here"
           />
         </div>
-        <div className="mb-5 join hidden lg:block">
-          <button
-            onClick={() => {
-              setGridCol2("grid-cols-2");
-              setIsActive("gridCol2");
-            }}
-            className={`btn ${
-              isActive === "gridCol2" ? "bg-secondary/70" : "bg-secondary/30"
-            }`}
+        <div className="flex justify-between">
+          <div className="mb-5 join hidden lg:block">
+            <button
+              onClick={() => {
+                setGridCol2("grid-cols-2");
+                setIsActive("gridCol2");
+              }}
+              className={`btn ${
+                isActive === "gridCol2" ? "bg-secondary/70" : "bg-secondary/30"
+              }`}
+            >
+              <BsGridFill />
+            </button>
+            <button
+              onClick={() => {
+                setGridCol3("grid-cols-3");
+                setIsActive("gridCol3");
+              }}
+              className={`btn ${
+                isActive === "gridCol3" ? "bg-secondary/70" : "bg-secondary/30"
+              }`}
+            >
+              <BsFillGrid3X2GapFill size={20} />
+            </button>
+          </div>
+
+          <select
+            ref={sortRef}
+            onChange={()=>setSort(sortRef?.current?.value)}
+            defaultValue="Sort by Recommendation"
+            className="select text-neutral"
           >
-            <BsGridFill />
-          </button>
-          <button
-            onClick={() => {
-              setGridCol3("grid-cols-3");
-              setIsActive("gridCol3");
-            }}
-            className={`btn ${
-              isActive === "gridCol3" ? "bg-secondary/70" : "bg-secondary/30"
-            }`}
-          >
-            <BsFillGrid3X2GapFill size={20} />
-          </button>
+            <option>Sort by Recommendation</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
         </div>
         {loading ? (
           <Spinner />
