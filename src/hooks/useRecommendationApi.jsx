@@ -4,11 +4,11 @@ import useAxiosSecure from './useAxiosSecure';
 const useRecommendationApi = () => {
   const axiosSecure = useAxiosSecure();
 
-  const addRecommendationPromise = async (recommendedData)=>{
+  const addRecommendationPromise = useCallback(async (recommendedData)=>{
     const res = await axiosSecure.post("/add-recommendation", recommendedData);
     return res.data;
-  }
-
+  }, [ axiosSecure ])
+  
   const allRecommendationsPromise = useCallback(async (id)=>{
     const res = await axiosSecure.get(`/all-recommendations/${id}`);
     return res.data;

@@ -57,25 +57,30 @@ const Queries = () => {
           text: "You already bookmarked this query",
           icon: "warning"
         })
-      }
-      if(modifiedCount !== 0){
+      } else if(modifiedCount > 0){
         Swal.fire({
           title: "Query Bookmarked",
           text: "You successfully bookmarked this query",
           icon: "success"
+        })
+      } else {
+        Swal.fire({
+          title: "Bookmark Failed",
+          text: "Unable to bookmark this query",
+          icon: "error"
         })
       }
     },
     onError: (error) => {
       Swal.fire({
         title: error.message,
-        text: error,
+        text: error.response?.data?.message || "An error occurred",
         icon: "error"
       })
     },
   });
-
   const handleBookMark = (dataToBookmark) => {
+    if (!user) return;
     bookmarkMutate(dataToBookmark);
   };
 
@@ -198,7 +203,7 @@ const Queries = () => {
                     </Link>
                   </div>
                 </div>
-                <button onClick={()=> handleBookMark({userEmail: user.email, booked: [query._id]})} className="btn px-1 btn-primary absolute top-5 right-5">
+                <button onClick={()=> handleBookMark({userEmail: user?.email, booked: [query._id]})} className="btn px-1 btn-primary absolute top-5 right-5">
                   <FaBookmark size={25}/>
                 </button>
               </div>
