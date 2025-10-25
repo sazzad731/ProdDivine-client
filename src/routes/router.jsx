@@ -12,6 +12,7 @@ import QueryDetails from "../pages/QueryDetails/QueryDetails";
 import MyRecommendations from "../pages/MyRecommendations/MyRecommendations";
 import RecommendationsForMe from "../pages/RecommendationsForMe/RecommendationsForMe";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Bookmarked from "../pages/Bookmarked/Bookmarked";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/bookmarked",
+        element: <PrivateRoute><Bookmarked/></PrivateRoute>
+      }
     ],
   },
   {

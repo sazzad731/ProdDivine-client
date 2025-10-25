@@ -159,8 +159,8 @@ const Navbar = () => {
         <ul className="menu-horizontal gap-7 text-white">{navMenu}</ul>
       </div>
       <div className="navbar-end w-full gap-4">
-        <Link to="/saved" className="btn btn-primary px-1">
-          <FaRegBookmark size={25}/>
+        <Link to="/bookmarked" className="btn btn-primary px-1">
+          <FaRegBookmark size={25} />
         </Link>
         <ThemeBtn />
         <div className="hidden sm:inline-flex">{authButtons}</div>
