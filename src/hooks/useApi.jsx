@@ -4,39 +4,46 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 const useApi = () => {
   const axiosSecure = useAxiosSecure();
 
-  const recentQueryPromise = ()=>{
-    return axiosSecure.get("/recent-query").then(res => res.data);
+  const recentQueryPromise = async ()=>{
+    const res = await axiosSecure.get("/recent-query");
+    return res.data;
   }
 
-  const allQueriesPromise = useCallback((name, sort)=>{
-    return axiosSecure.get(`/queries?search=${name}&&sort=${sort}`).then(res => res.data);
+  const allQueriesPromise = useCallback(async (name, sort)=>{
+    const res = await axiosSecure.get(`/queries?search=${name}&&sort=${sort}`);
+    return res.data;
   }, [ axiosSecure ])
   
 
-  const queryDetailsPromise = useCallback((id)=>{
-    return axiosSecure.get(`/query-details/${id}`).then(res => res.data);
+  const queryDetailsPromise = useCallback(async (id)=>{
+    const res = await axiosSecure.get(`/query-details/${id}`);
+    return res.data;
   }, [axiosSecure])
 
 
-  const addQueryPromise = (data)=>{
-    return axiosSecure.post("/add-query", data).then((res) => res.data);
+  const addQueryPromise = async (data)=>{
+    const res = await axiosSecure.post("/add-query", data);
+    return res.data;
   }
 
 
-  const myQueriesPromise = useCallback((email)=>{
-    return axiosSecure.get(`/my-queries?email=${email}`).then(res => res.data);
+  const myQueriesPromise = useCallback(async (email)=>{
+    const res = await axiosSecure.get(`/my-queries?email=${email}`);
+    return res.data;
   }, [ axiosSecure ])
 
 
 
-  const updateQueryPromise = (id, data)=>{
-    return axiosSecure.patch(`/update-query/${id}`, data).then(res => res.data);
+  const updateQueryPromise = async (id, data)=>{
+    const res = await axiosSecure.patch(`/update-query/${id}`, data);
+    return res.data;
   }
 
   
 
-  const deleteQueryPromise = (id)=>{
-    return axiosSecure.delete(`/delete-query/${id}`).then(res => res.data);
+  const deleteQueryPromise = async (id)=>{
+    const res = await axiosSecure.delete(`/delete-query/${id}`);
+    return res.data;
   }
 
   return {

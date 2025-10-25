@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import ThemeBtn from "../ThemeBtn/ThemeBtn";
+import { FaRegBookmark } from "react-icons/fa6";
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
 
@@ -113,12 +114,11 @@ const Navbar = () => {
         </Link>
       )}
       {user && (
-        <button
-          onClick={handleLogOut}
-          className="btn btn-outline btn-primary w-full sm:w-24 text-base"
-        >
-          Log out
-        </button>
+        <>
+          <button onClick={handleLogOut} className="btn btn-outline btn-primary w-full sm:w-24 text-base">
+            Log out
+          </button>
+        </>
       )}
     </>
   );
@@ -159,6 +159,9 @@ const Navbar = () => {
         <ul className="menu-horizontal gap-7 text-white">{navMenu}</ul>
       </div>
       <div className="navbar-end w-full gap-4">
+        <Link to="/saved" className="btn btn-primary px-1">
+          <FaRegBookmark size={25}/>
+        </Link>
         <ThemeBtn />
         <div className="hidden sm:inline-flex">{authButtons}</div>
       </div>

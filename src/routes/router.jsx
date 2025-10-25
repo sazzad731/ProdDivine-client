@@ -41,6 +41,8 @@ export const router = createBrowserRouter([
         path: "/registration",
         Component: Registration,
       },
+
+      // Private routes
       {
         path: "/add-queries",
         element: (

@@ -5,6 +5,10 @@ import Spinner from "../../components/Spinner/Spinner"
 import { Link, useNavigate } from "react-router";
 import { IoSearch } from "react-icons/io5";
 import { BsFillGrid3X2GapFill, BsGridFill } from "react-icons/bs";
+import { FaBookmark } from "react-icons/fa6";
+import {useMutation} from "@tanstack/react-query"
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 
 const Queries = () => {
@@ -19,6 +23,8 @@ const Queries = () => {
   const navigate = useNavigate();
   const [ sort, setSort ] = useState("");
   const sortRef = useRef()
+  const axiosSecure = useAxiosSecure();
+  const {user} = useAuth()
 
 
   useEffect(()=>{
@@ -37,6 +43,42 @@ const Queries = () => {
         navigate("/not-found");
       });
   }, [ allQueriesPromise, navigate, searchValue, sort ])
+
+
+  const {mutate: bookmarkMutate} = useMutation({
+    mutationFn: (mutedData) => {
+      return axiosSecure.put(`/bookmark`, mutedData)
+    },
+    onSuccess: (data) => {
+      const {matchedCount, modifiedCount} = data.data
+      if(matchedCount > 0 && modifiedCount === 0){
+        Swal.fire({
+          title: "Already Bookmarked",
+          text: "You already bookmarked this query",
+          icon: "warning"
+        })
+      }
+      if(modifiedCount !== 0){
+        Swal.fire({
+          title: "Query Bookmarked",
+          text: "You successfully bookmarked this query",
+          icon: "success"
+        })
+      }
+    },
+    onError: (error) => {
+      Swal.fire({
+        title: error.message,
+        text: error,
+        icon: "error"
+      })
+    },
+  });
+
+  const handleBookMark = (dataToBookmark) => {
+    bookmarkMutate(dataToBookmark);
+  };
+
   
 
 
@@ -91,7 +133,7 @@ const Queries = () => {
 
           <select
             ref={sortRef}
-            onChange={()=>setSort(sortRef?.current?.value)}
+            onChange={() => setSort(sortRef?.current?.value)}
             defaultValue="Sort by Recommendation"
             className="select text-neutral mb-5"
           >
@@ -156,6 +198,9 @@ const Queries = () => {
                     </Link>
                   </div>
                 </div>
+                <button onClick={()=> handleBookMark({userEmail: user.email, booked: [query._id]})} className="btn px-1 btn-primary absolute top-5 right-5">
+                  <FaBookmark size={25}/>
+                </button>
               </div>
             ))}
           </div>

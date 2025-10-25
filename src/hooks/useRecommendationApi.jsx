@@ -4,26 +4,31 @@ import useAxiosSecure from './useAxiosSecure';
 const useRecommendationApi = () => {
   const axiosSecure = useAxiosSecure();
 
-  const addRecommendationPromise = (recommendedData)=>{
-    return axiosSecure.post("/add-recommendation", recommendedData).then(res=>res.data)
+  const addRecommendationPromise = async (recommendedData)=>{
+    const res = await axiosSecure.post("/add-recommendation", recommendedData);
+    return res.data;
   }
 
-  const allRecommendationsPromise = useCallback((id)=>{
-    return axiosSecure.get(`/all-recommendations/${id}`).then(res => res.data);
+  const allRecommendationsPromise = useCallback(async (id)=>{
+    const res = await axiosSecure.get(`/all-recommendations/${id}`);
+    return res.data;
   }, [ axiosSecure ])
   
 
-  const myRecommendationsPromise = useCallback((email)=>{
-    return axiosSecure.get(`/my-recommendations/${email}`).then(res => res.data);
+  const myRecommendationsPromise = useCallback(async (email)=>{
+    const res = await axiosSecure.get(`/my-recommendations/${email}`);
+    return res.data;
   }, [ axiosSecure ])
   
-  const deleteRecommendationPromise = (queyId, productId)=>{
-    return axiosSecure.delete(`/delete-recommendations?productId=${productId}&&queryId=${queyId}`).then(res => res.data);
+  const deleteRecommendationPromise = async (queyId, productId)=>{
+    const res = await axiosSecure.delete(`/delete-recommendations?productId=${productId}&&queryId=${queyId}`);
+    return res.data;
   }
 
 
-  const recommendationsForMePromise = useCallback((email)=>{
-    return axiosSecure.get(`/recommendations-for-me?email=${email}`).then((res) => res.data);
+  const recommendationsForMePromise = useCallback(async (email)=>{
+    const res = await axiosSecure.get(`/recommendations-for-me?email=${email}`);
+    return res.data;
   }, [axiosSecure])
 
   return {

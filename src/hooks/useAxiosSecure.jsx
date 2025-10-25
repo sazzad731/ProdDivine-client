@@ -4,8 +4,8 @@ import useAuth from './useAuth';
 import Swal from 'sweetalert2';
 
 const axiosInstance = axios.create({
-  baseURL: "https://prod-divine-server.vercel.app",
-  // baseURL: "http://localhost:5000",
+  // baseURL: "https://prod-divine-server.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
@@ -15,7 +15,7 @@ const useAxiosSecure = () => {
     async (config) => {
       const currentUser = auth.currentUser;
       if (currentUser) {
-        const token = await currentUser.getIdToken(); // ✅ The real Firebase ID token
+        const token = await currentUser.getIdToken(); // The real Firebase ID token
         config.headers.authorization = `Bearer ${token}`;
       }
       return config;
